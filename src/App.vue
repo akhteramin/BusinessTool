@@ -1,26 +1,24 @@
 <template>
     <div class="app">
-        <!--<img src="./assets/logo.png">-->
+        <header-view></header-view>
         <router-view/>
+        <footer-view></footer-view>
     </div>
 </template>
 
 <script>
 /* eslint-disable */
+import Header from './components/Header';
+import Footer from './components/Footer';
 export default {
-    name: 'App'
+    name: 'App',
+    components: {
+        'header-view': Header,
+        'footer-view': Footer
+    }
 };
 </script>
 
 <style lang="scss" scoped>
-    $base_color: red;
-    $base_size: 60px;
-    .app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: $base_color;
-        margin-top: $base_size;
-    }
+    @import "styles/main";
 </style>

@@ -1,0 +1,17 @@
+/*Typography*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto:100,300,500,700,900');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headline-font-family;
+  font-weight: 500;
+}
+
+.headline-title-small-allcaps {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+p {
+  line-height: 24px;
+  margin-top: 0;
+}

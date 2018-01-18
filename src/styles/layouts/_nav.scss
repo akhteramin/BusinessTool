@@ -1,0 +1,29 @@
+/*NAV - styles*/
+nav {
+  .nav {
+    margin: 0px;
+    a.btn-default {
+      background: $btn-default-color;
+      border: 1px solid transparent;
+    }
+    a.btn-default:hover {
+      border: 1px solid transparent;
+    }
+  }
+  .ipay-global-btn.btn-primary {
+    border: 1px solid $secondary-color;
+    &:hover, &:focus/*, &:active*/ {
+      border: 1px solid $secondary-color !important;
+      color: $btn-default-font-color;
+      background: darken($secondary-color, 5%);
+    }
+  }
+  .ipay-global-btn {
+    font-size: 12px;
+    padding: 8px 32px !important;
+  }
+  ul li:first-child a {
+    margin-right: 10px;
+  }
+}
+

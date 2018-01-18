@@ -1,0 +1,17 @@
+/*HEADER STYLES*/
+header {
+  background-color: $primary-color;
+  //height: 76px;
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999999999999;
+}
+
+/*Logo*/
+.logo {
+  float: left;
+}
+

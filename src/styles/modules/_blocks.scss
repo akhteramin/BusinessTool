@@ -1,0 +1,208 @@
+/*SECTION - blocks styles*/
+
+/*BLOCKS - welcome message*/
+.welcomeScreen {
+  position: relative;
+  padding: 0;
+  .welcomeImage {
+    img {
+      width: 100%;
+    }
+  }
+  .welcomeImage2 {
+    display: none;
+    img {
+      width: 100%;
+    }
+  }
+  .welcomeContent {
+    bottom: 0;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    padding: 80px 0;
+    h2 {
+      font-weight: lighter;
+      font-size: $blockTitle-font-size;
+      color: $white;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+    h3 {
+      font-weight: lighter;
+      font-size: 32px;
+      color: $white;
+      line-height: 1.05;
+      margin-bottom: 38px;
+    }
+    .ipay-global-btn {
+      margin: 0 5px;
+    }
+    .buttonGroup {
+      .download-mobile-app {
+        width: 225px;
+        height: auto;
+        margin: auto 10px;
+      }
+    }
+  }
+  .promotional-offer-2 {
+    display: none;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    background-color: #f11f1a;
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    background-image: url(./assets/welcome/foorti.png);
+    background-repeat: no-repeat;
+    background-position: bottom -10px left -12px;
+    background-size: 61px 65px;
+    span {
+      color: #fda800;
+      &.amount {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+  .promotional-offer {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 200px;
+    img {
+      height: 100%;
+    }
+  }
+}
+
+/*BLOCK - best partners*/
+.partnersList {
+  .item {
+    height: 100px;
+    text-align: center;
+    &:before {
+      content: ' ';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
+    img {
+      margin: 0 auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+/*BLOCK - applicationSample*/
+.applicationSample {
+  .sectionHeader h2 {
+    margin-bottom: 75px;
+  }
+  .video {
+    margin-bottom: 60px;
+  }
+  .steps {
+    div {
+      margin-bottom: 43px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/*BLOCK - purchasesPayment*/
+.purchasesPayment {
+  z-index: 00000000000;
+  position: relative;
+  .topBuffer {
+    margin-top: 103px;
+    position: relative;
+    right: 90px;
+  }
+  .shoppingBag {
+    img {
+      position: relative;
+      left: 80px;
+    }
+  }
+}
+
+/*BLOCKS - requestMoney*/
+.requestMoney {
+  .content {
+    margin-top: 76px;
+  }
+  .shadowBox {
+    top: 10px;
+  }
+  .col-md-5.col-md-offset-1 {
+    margin-left: 8%;
+  }
+}
+
+/*BLOCKS - joinTheTeam*/
+.joinMessage {
+  margin-top: 70px;
+  p {
+    margin-bottom: 40px;
+  }
+}
+
+/*BLOCKS - benefits*/
+.benefits {
+  h4 {
+    font-size: $base-font-size;
+    color: $headline-font-color;
+    font-weight: normal;
+  }
+  img {
+    height: 65px;
+    margin-bottom: 10px;
+  }
+  .container {
+    width: 980px;
+  }
+}
+
+/*BLOCKS - jobsCategory*/
+.jobsCategory {
+  .categoryBlock {
+    margin-bottom: 18px;
+    border-bottom: 1px solid #E8E8E8;
+    &:last-child {
+      border-bottom: none;
+    }
+    .position {
+      margin-bottom: 18px;
+    }
+    .positionName {
+      h4 a {
+        font-weight: normal;
+        color: $primary-color;
+      }
+    }
+    .numberOfPosition {
+      p {
+        font-family: $headline-font-family;
+      }
+    }
+  }
+}
+
+//.desktop-only {
+//  display: block;
+//}
+//.mobile-only {
+//  display: none;
+//}
+
+.offer-img {
+  width: auto;
+  height: 448px;
+}

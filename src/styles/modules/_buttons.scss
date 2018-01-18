@@ -1,0 +1,110 @@
+/*BUTTON STYLES*/
+
+.ipay-global-btn {
+  font-family: $btn-font-family;
+  font-size: $btn-font-size !important;
+  font-weight: 400;
+  text-transform: uppercase;
+  border: none;
+  @include button-border-radius(50px !important);
+  position: relative;
+  background-color: $btn-default-color;
+  color: $btn-default-font-color;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  &:before {
+    border-radius: 50px !important;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include button-transform(scale(0));
+    @include button-transition-property(transform);
+    @include button-transition-duration(0.3s);
+    @include button-transition-timing-function(ease-out);
+  }
+  &:hover {
+    &:before {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  &.btn-primary {
+    background-color: $btn-primary-color;
+    color: $btn-primary-font-color;
+    &:before {
+      background: $secondary-color;
+    }
+    &:hover, &:focus {
+      background-color: lighten($btn-primary-color, 5%);
+      color: $btn-primary-font-color;
+      border: none;
+      box-shadow: none;
+    }
+    &:active {
+      color: $headline-font-color;
+      border: none;
+      box-shadow: none;
+      &:hover {
+        color: $headline-font-color;
+      }
+    }
+  }
+
+  &.btn-default {
+    color: $black;
+    &:before {
+      background: $btn-default-color;
+    }
+    &:hover, &:focus {
+      color: $black;
+      background-color: darken($btn-default-color, 10%);
+      border: none;
+      box-shadow: none;
+    }
+    &:active {
+      box-shadow: none;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &.btn-brand-border {
+    background-color: transparent;
+    border: 1px solid $btn-primary-color;
+    color: $btn-primary-color;
+    &:hover, &:focus {
+      color: $btn-default-color;
+      background: $btn-primary-color;
+      border: 1px solid lighten($btn-primary-color, 5%);
+    }
+    &:active {
+      box-shadow: none;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &.btn-md {
+    padding: 15px 66px;
+  }
+
+  &.btn-lg {
+    padding: 15px 40px;
+  }
+
+  &.btnColorNan {
+    background-color: $btn-nan-color;
+  }
+}
+

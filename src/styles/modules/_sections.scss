@@ -1,0 +1,194 @@
+/*SECTION STYLES*/
+section {
+  padding: 80px 0 100px;
+  .sectionHeader {
+    h2 {
+      font-size: $blockTitleSmall-font-size;
+      color: $headline-font-color;
+      letter-spacing: 5px;
+      margin-bottom: 30px;
+    }
+    p {
+      margin-bottom: 66px;
+    }
+  }
+  .rowSpace {
+    margin-bottom: 60px;
+  }
+}
+
+/* Secure Instant Payment */
+.secureInstantPayment {
+  //background-color: $secondary-color;
+  .serviceType {
+    text-align: center;
+    .serviceBlock {
+      padding: 20px;
+      height: 200px;
+      box-sizing: border-box;
+      .media-holder {
+        height: 80px;
+        width: 80px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        img {
+          width: 100%;
+        }
+      }
+      .contentHolder {
+        h2 {
+          color: $headline-font-color;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+/* shopping Promotion Section */
+.shoppingPromotion {
+  background-image: url(./assets/welcome/shoppingBanner.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  h2 {
+    font-weight: lighter;
+    font-size: $blockTitle-font-size;
+    color: $white;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-weight: 300;
+  }
+}
+
+.shoppingPromotion2 {
+  position: relative;
+  padding: 0;
+  .shoppingPromotion-image {
+    background-image: url(./assets/welcome/shoppingBanner.jpg);
+    background-repeat: no-repeat;
+    background-position: top -55px center;
+    background-size: cover;
+    height: 700px;
+    img {
+      height: 100%;
+      display: none;
+    }
+  }
+  .shoppingPromotion-content {
+    top: 15%;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    padding: 80px 0;
+    h2 {
+      font-weight: lighter;
+      font-size: $blockTitle-font-size;
+      color: $white;
+      line-height: 60px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-weight: 300;
+      color: $white;
+    }
+  }
+}
+
+/* Trusted Best Partners */
+.trusted-partners {
+    background-color: $secondary-color;
+    color: $headline-font-color;
+    text-align: center;
+    h2 {
+        font-weight: lighter;
+        font-size: $blockTitle-font-size;
+        line-height: 60px;
+        margin-bottom: 20px;
+    }
+    p {
+        margin-bottom: 35px;
+    }
+
+    ul {
+        display: inline-block;
+        li {
+            margin-right: 50px;
+            img {
+                height: 100px;
+                width: auto;
+            }
+        }
+    }
+
+    .carousel-indicators {
+        .active {
+            background-color: $ipay-text-grey;
+        }
+        li {
+            border: 1px solid $ipay-text-grey;
+        }
+    }
+}
+
+/* Business Solution */
+.businessSolution {
+  color: $headline-font-color;
+  text-align: center;
+  h2 {
+    font-weight: lighter;
+    font-size: $blockTitle-font-size;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+  p {
+    margin-bottom: 35px;
+  }
+}
+
+/*SECTION - partners*/
+.bestPartners {
+  background-color: $secondary-color;
+}
+
+/*SECTION - Create Account*/
+.createAccount {
+  background-color: $primary-color;
+  padding: 50px 0;
+  h2 {
+    color: $white;
+    font-weight: lighter;
+    font-size: 36px;
+    line-height: 50px;
+  }
+}
+
+/*SECTION - purchasesPayment*/
+.purchasesPayment {
+  background-color: $secondary-color;
+  padding: 0 0 100px;
+}
+
+/*SECTION - requestMoney*/
+.requestMoney {
+  padding: 80px 0 0 !important;
+}
+
+/*SECTION - joinTheTeam*/
+section.joinTheTeam {
+  padding-top: 100px;
+}
+
+/*SECTION - benefits*/
+.benefits {
+  background-color: $secondary-color;
+}
+
+/*SECTION - openPosition*/
+.openPosition {
+  background-color: $secondary-color;
+}

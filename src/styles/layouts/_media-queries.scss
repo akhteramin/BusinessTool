@@ -1,0 +1,1127 @@
+/*Media Queries*/
+
+/*Media Queries -  Desktop*/
+@media screen and (max-width: $mq-desktop) {
+
+}
+
+/*Media Queries -  Medium Device (670px to 1199px)*/
+@media screen and (max-width: $mq-md-device) {
+    .mercantileLogo {
+        width: 90%;
+    }
+    .blockTitle h2 {
+        font-size: 35px;
+    }
+    .createAccount h2 {
+        font-size: 25px;
+        line-height: 37px;
+    }
+    .shoppingPromotion, .businessSolution {
+        h2 {
+            font-size: 35px;
+            line-height: 1.1;
+        }
+    }
+
+    footer .footerMenu ul li a {
+        padding-right: 5px;
+    }
+
+    .offer-img {
+        width: auto;
+        height: 425px;
+    }
+
+    .trusted-partners {
+        ul {
+            padding-left: 20px;
+            li {
+                margin-right: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+/*Media Queries -  tablet landscape (669px to 1024px) */
+@media screen and (max-width: $mq-tablet-landscape) {
+    .welcomeScreen {
+        padding-top: 0 !important;
+        .welcomeContent {
+            bottom: 0;
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            padding: 60px 0;
+            h2 {
+                font-weight: lighter;
+                font-size: 39px;
+                color: $white;
+                line-height: 1.1;
+                margin-bottom: 15px;
+            }
+            h3 {
+                font-weight: lighter;
+                font-size: 26px;
+                color: $white;
+                line-height: 1.05;
+                margin-bottom: 38px;
+            }
+            .ipay-global-btn {
+                margin: 0 5px;
+            }
+            .buttonGroup {
+                .download-mobile-app {
+                    width: 175px;
+                    height: auto;
+                    margin: auto 10px;
+                }
+            }
+        }
+    }
+    .shoppingPromotion2 {
+        position: relative;
+        padding: 0;
+        .shoppingPromotion-image {
+            background-image: none;
+            height: inherit;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .shoppingPromotion-content {
+            top: 15%;
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            padding: 50px 0;
+            h2 {
+                font-weight: lighter;
+                font-size: 36px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                padding-left: 50px;
+            }
+            p {
+                padding-left: 50px;
+            }
+        }
+    }
+
+    .joinMessage {
+        margin: 0;
+    }
+    .benefits {
+        .container {
+            width: inherit;
+        }
+        .item {
+            margin-bottom: 30px;
+        }
+        .hiddenMobile {
+            display: none;
+        }
+    }
+}
+
+/*Media Queries - tablet small landscape ($mq-tablet-small-landscape: 991px !default;) */
+@media screen and (max-width: $mq-tablet-small-landscape) {
+    /* shopping promotion */
+    .shoppingPromotion2 {
+        position: relative;
+        padding: 0;
+        .shoppingPromotion-image {
+            background-image: none;
+            min-height: inherit;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .shoppingPromotion-content {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 50px 0;
+            background-color: $ipay-primary;
+            h2 {
+                font-weight: lighter;
+                font-size: 36px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                padding-left: 0;
+            }
+            p {
+                padding-left: 0;
+            }
+        }
+    }
+    .shoppingPromotion {
+        background-attachment: inherit;
+        background-position: top right;
+        background: url(./assets/welcome/black-overlay.png) top center, url(./assets/welcome/shoppingBanner.jpg) top right;
+        background-size: cover;
+    }
+    .welcomeScreen {
+        padding-top: 0 !important;
+        .welcomeImage2 {
+            display: none;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .purchasesPayment .shoppingBag img {
+        left: 0;
+    }
+    /*  .general-header ~ .page-container {
+        margin-top: 76px;
+        !* margin-bottom: 277px;*!
+      }*/
+    .requestMoney .col-md-5.col-md-offset-1 {
+        margin-left: 0;
+    }
+    .createAccountButton.text-right {
+        text-align: center;
+    }
+    .createAccount h2 {
+        text-align: center;
+        br {
+            display: none;
+        }
+    }
+    .mercantileLogo {
+        width: inherit;
+    }
+    .purchasesPayment .topBuffer {
+        left: 0;
+        right: 0;
+        margin: 0;
+    }
+    section .rowSpace {
+        margin: 0;
+    }
+    .requestMoney .content {
+        margin: 0;
+    }
+    .requestMoney {
+        padding: 60px 0 0;
+    }
+    section {
+        padding: 60px 0 60px;
+    }
+    .partnersList .item {
+        margin-bottom: 20px;
+    }
+    .purchasesPayment {
+        background-color: #F9F9F9;
+        padding: 0 0 60px;
+    }
+    .purchasesPayment {
+        padding: 0 0 60px;
+    }
+    .socialMedia {
+        margin-top: 20px;
+        .text-right {
+            text-align: left;
+        }
+    }
+    .text-right.othersMenu {
+        text-align: left;
+    }
+    .othersMenu {
+        margin-top: 10px;
+    }
+    footer .footerMenu .list-inline.othersMenu > li {
+        padding-left: 0;
+    }
+    footer .footerMenu ul.othersMenu li a {
+        padding-right: 15px;
+        padding-left: 4px;
+    }
+
+    .offer-img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .profile-sidebar {
+        float: none;
+        .profile-sidebar-portlet {
+            .profile-userpic {
+                width: 256px;
+                height: 256px;
+                display: block;
+                margin: 0 auto;
+                .img-btn {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                    button {
+                        bottom: 30px;
+                        right: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .top-seven {
+        margin-top: 0;
+    }
+}
+
+/* Media Queries -  tablet portrait (768px) */
+@media screen and (max-width: $mq-tablet-portrait) {
+    .welcomeScreen {
+        padding-top: 0 !important;
+        position: relative;
+        .welcomeImage {
+            display: none;
+        }
+        .welcomeImage2 {
+            display: block;
+            img {
+                width: 100%;
+            }
+        }
+        .promotional-offer {
+            display: none;
+        }
+        .promotional-offer-2 {
+            display: block;
+        }
+        .welcomeContent {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 50px 0;
+            background-color: $primary-color;
+            h2 {
+                font-weight: lighter;
+                font-size: 36px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 15px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            h3 {
+                font-weight: lighter;
+                font-size: 22px;
+                color: $white;
+                line-height: 1.1;
+                margin-bottom: 38px;
+            }
+            .ipay-global-btn {
+                margin: 0 5px 10px 5px;
+                &.btn-primary {
+                    border: 1px solid $ipay-secondary;
+                }
+            }
+        }
+    }
+    .shoppingPromotion2 {
+        position: relative;
+        padding: 0;
+        .shoppingPromotion-image {
+            background-image: none;
+            min-height: inherit;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .shoppingPromotion-content {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 50px 0;
+            background-color: $ipay-primary;
+            h2 {
+                font-weight: lighter;
+                font-size: 36px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                padding-left: 0;
+            }
+            p {
+                padding-left: 0;
+            }
+        }
+    }
+    .applicationSample .video {
+        margin-bottom: 40px;
+    }
+    .socialMedia .text-right {
+        text-align: center;
+    }
+    .footerMenu, .text-right.othersMenu, .footerContent ul {
+        text-align: center;
+    }
+    .partnersList .item.mercantileBank {
+        margin-bottom: 5px;
+    }
+    .bottomPartnerLogo {
+        .item {
+            margin-bottom: 0;
+        }
+    }
+    section.joinTheTeam {
+        padding-top: 60px;
+    }
+    .mt-comments {
+        .mt-comment {
+            padding: 5px 0 5px 5px;
+            margin: 0 0 5px;
+            .mt-comment-img {
+                width: unset;
+                a {
+                    img {
+                        width: 60px !important;
+                        height: 60px !important;
+                    }
+                }
+            }
+            .mt-comment-body {
+                .mt-comment-info {
+                    .mt-comment-date {
+                        font-size: 75%;
+                        margin-top: 3px;
+                    }
+                }
+                .mt-comment-status {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    .modal {
+        .modal-header {
+            padding: 15px;
+        }
+    }
+}
+
+/* Media Queries - (less than 669px) mobile medium device */
+@media screen and (max-width: $mq-mobile-md-device) {
+    .welcomeScreen {
+        padding-top: 0 !important;
+        position: relative;
+        .welcomeImage {
+            img {
+                width: 100%;
+            }
+        }
+        .welcomeContent {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 30px 0;
+            /*background-color:$secondary-color;*/
+            h2 {
+                font-weight: lighter;
+                font-size: 30px;
+                line-height: 1.2;
+                margin-bottom: 15px;
+            }
+            h3 {
+                font-weight: lighter;
+                font-size: 20px;
+                line-height: 1.1;
+                margin-bottom: 20px;
+            }
+            .ipay-global-btn {
+                margin: 0 5px 10px 5px;
+            }
+            .buttonGroup {
+                .download-mobile-app {
+                    width: 150px;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .desktop-only {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+    }
+    .btn-lg {
+        padding: 14px 26px;
+    }
+    .btn-sm {
+        padding: 10px 20px;
+    }
+    .openPosition {
+        .sectionHeader {
+            p {
+                br {
+                    display: none;
+                }
+            }
+        }
+    }
+    .benefits {
+        .sectionHeader {
+            p {
+                br {
+                    display: none;
+                }
+            }
+        }
+    }
+    .offer-img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 424px;
+    }
+    .portlet {
+        .portlet-title {
+            .caption {
+                .caption-helper {
+                    display: none;
+                }
+            }
+        }
+    }
+    //.my-bank-item {
+    //    .portlet-title {
+    //        .my-bank-info {
+    //            .bank-description {
+    //                .bank-name {
+    //                    font-size: 18px
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+}
+
+/*Media Queries - (less than 497px) mobile-four-nine-seven */
+@media screen and (max-width: $mq-mobile-four-nine-seven) {
+    .shoppingPromotion h2, .businessSolution h2 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .offer-img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 380px;
+    }
+
+    .mt-comments {
+        .mt-comment {
+            .mt-comment-img {
+                a {
+                    img {
+                        width: 66px !important;
+                        height: 66px !important;
+                    }
+                }
+            }
+            .mt-comment-body {
+                padding-left: 15px;
+                .mt-comment-info {
+                    .mt-comment-author {
+                        margin: 0 7px 0 0;
+                        strong {
+                            font-weight: 600;
+                        }
+                    }
+                    .mt-comment-date {
+                        float: none;
+                        margin-top: 0;
+                    }
+                }
+                .mt-comment-details {
+                    margin: 0;
+                    .mt-comment-text {
+                        small {
+                            font-size: 75%;
+                        }
+                    }
+                    ul.mt-comment-actions {
+                        font-size: 10px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*Media Queries -  (less than 480px) mobile landscape */
+@media screen and (max-width: $mq-mobile-landscape) {
+    .bestPartners {
+        .sectionHeader {
+            p {
+                br {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .offer-img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 328px;
+    }
+
+    .mt-comments {
+        .mt-comment {
+            .mt-comment-body {
+                .mt-comment-info {
+                    .mt-comment-author {
+                        margin: 0;
+                        font-size: 12px;
+                    }
+                }
+                .mt-comment-status {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}
+
+/*Media Queries -  (less than 420px) mobile four hundred */
+@media screen and (max-width: $mq-mobile-four-hundred) {
+    .welcomeScreen {
+        padding-top: 0 !important;
+        position: relative;
+        .welcomeImage {
+            img {
+                width: 100%;
+            }
+        }
+        .welcomeContent {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 20px 0;
+            background-color: $primary-color;
+            h2 {
+                font-weight: 200;
+                font-size: 24px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 15px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            h3 {
+                font-weight: 300;
+                font-size: 14px;
+                color: $white;
+                line-height: 1.1;
+                padding: 0 20px;
+                margin-bottom: 20px;
+                letter-spacing: 0.6px;
+            }
+            .ipay-global-btn {
+                margin: 0 5px 10px 5px;
+                font-size: 12px !important;
+                &.btn-primary {
+                    border: 1px solid $ipay-secondary;
+                }
+            }
+            .buttonGroup {
+                .download-mobile-app {
+                    width: 160px;
+                    height: auto;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+    .shoppingPromotion2 {
+        position: relative;
+        padding: 0 !important;
+        .shoppingPromotion-image {
+            background-image: none;
+            min-height: inherit;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .shoppingPromotion-content {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 20px 0;
+            background-color: $ipay-primary;
+            h2 {
+                font-weight: 200;
+                font-size: 24px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                padding-left: 0;
+            }
+            p {
+                padding-left: 0;
+            }
+        }
+    }
+    .portlet.light.modified {
+        padding: 20px 20px;
+    }
+    .secureInstantPayment {
+        .serviceType {
+            .serviceBlock {
+                height: 250px;
+            }
+        }
+    }
+    .mobile-only {
+        display: block;
+    }
+    .desktop-only {
+        display: none;
+    }
+    .btn-sm {
+        padding: 10px 20px;
+    }
+    .purchasesPayment {
+        padding-top: 0 !important;
+    }
+    .requestMoney {
+        padding: 40px 0 0 !important;
+    }
+    section {
+        padding: 30px 0 30px !important;
+    }
+    .btn-lg {
+        padding: 12px 31px;
+    }
+    section .sectionHeader p {
+        margin-bottom: 30px;
+    }
+    section .sectionHeader h2 {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    .shadowBox {
+        width: 320px;
+    }
+    .page-header {
+        .page-header-top {
+            //min-height: 76px;
+            .page-logo {
+                height: auto;
+                .logo-default {
+                    height: 25px;
+                    margin-top: 26px !important;
+                }
+            }
+            .menu-toggler {
+                margin-right: 0;
+                margin-left: 5px;
+                margin-top: 22px;
+                opacity: 1;
+            }
+            .top-menu {
+                margin: 18px 0;
+                clear: inherit;
+                .navbar-nav {
+                    margin-top: 4px;
+                }
+                .navbar-nav > li {
+                    padding-left: 15px !important;
+                    &.dropdown {
+                        height: 36px;
+                        a {
+                            &:hover, &:active, &:focus {
+                                background-color: transparent !important;
+                            }
+                        }
+                        &.dropdown-user {
+                            .dropdown-toggle {
+                                &.user-avtr {
+                                    width: 30px;
+                                    height: 30px;
+                                    padding: 0;
+                                    img {
+                                        margin: 0;
+                                        border: none;
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                        }
+                        &.dropdown-notification {
+                            border-left: 1px solid darken($ipay-primary, 5%);
+                            margin-left: 10px;
+                            .dropdown-toggle {
+                                padding: 12px 0 8px;
+                            }
+                        }
+                        &.dropdown-balance {
+                            padding-left: 0 !important;
+                            text-align: right;
+                            position: relative !important;
+                            .balance-title {
+                                font-size: 11px;
+                                color: lighten($ipay-success, 10%);
+                                display: block;
+                                line-height: 19px;
+                                margin: 0;
+                            }
+                            .balance-amount {
+                                float: right;
+                                font-size: 14px;
+                                font-weight: 400;
+                                color: #fff;
+                                line-height: 16px;
+                            }
+                            .balance-reload {
+                                float: right;
+                                padding: 0px 6px 0 0;
+                                margin-top: -2px;
+                                color: lighten($ipay-success, 10%);
+                            }
+                        }
+                        &.open {
+                            .dropdown-toggle {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                    &.dropdown > .dropdown-toggle {
+                        .badge {
+                            &.badge-default {
+                                right: -7px !important;
+                                top: 3px;
+                                background-color: lighten($ipay-success, 5%) !important;
+                            }
+                        }
+                    }
+                    &.notification {
+
+                    }
+                }
+            }
+        }
+    }
+    .ipay-account-settings .right-panel-item-holder {
+        padding: 75px 0 0 0;
+        background-repeat: no-repeat;
+        background-size: 80px 80px;
+        background-position: -8px 0px;
+    }
+    .btn-sm {
+        padding: 2px 10px;
+    }
+    .ipay-account-settings {
+        .right-panel-item-holder {
+            .row {
+                margin-right: 0;
+                margin-left: 0;
+                //div {
+                //    padding-left: 0 !important;
+                //}
+            }
+        }
+    }
+    .mt-element-step {
+        .step-line {
+            .mt-step-col {
+                min-height: 220px;
+                .mt-step-number {
+                    height: 36px;
+                    width: 36px;
+                }
+                .mt-step-title {
+                    font-size: 16px;
+                }
+                .mt-step-content {
+                    line-height: 21px;
+                }
+            }
+        }
+    }
+    .ipay-brand-bg {
+        &.solid {
+            .caption {
+                padding: 16px 0px 0px;
+                width: 85%;
+                .caption-helper {
+                    display: block;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+    .ipay-profile-complete-2 {
+        padding: 0;
+        .ipay-profile-complete-item {
+            padding: 15px 5px;
+            height: 180px;
+            min-height: 0;
+            border: none;
+            text-align: center;
+            .item-image {
+                margin-left: 50px;
+            }
+            .item-content-holder {
+                float: none;
+            }
+            &:first-child {
+                padding-left: 5px;
+                border-bottom: 1px solid darken($ipay-success, 5%);
+                border-right: 1px solid darken($ipay-success, 5%);
+            }
+            &:last-child {
+                border-top: 1px solid darken($ipay-success, 5%);
+                border-left: 1px solid darken($ipay-success, 5%);
+                margin: -1px 0 0 -1px;
+            }
+        }
+    }
+    .form-group {
+        &.mob-fg {
+            display: inline-block;
+            margin-bottom: 0;
+        }
+    }
+
+    .offer-img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 300px;
+    }
+}
+
+/*Media Queries -  (less than 375px) mobile three seventy */
+@media screen and (max-width: $mq-mobile-three-seventy) {
+    section {
+        padding: 30px 0 60px;
+    }
+
+    footer .footerMenu ul li a, footer .footerTop ul li a {
+        padding-right: 0;
+    }
+    .applicationSample .sectionHeader h2 {
+        margin-bottom: 30px;
+    }
+    section .sectionHeader h2 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    nav ul li:first-child a {
+        margin-right: 5px;
+    }
+    nav {
+        .btn {
+            padding: 8px 15px !important;
+        }
+        .ipay-global-btn {
+            padding: 2px 18px !important;
+        }
+    }
+    .blockTitle {
+        h2 {
+            font-size: 28px;
+        }
+    }
+}
+
+/*Media Queries -  (less than 320px) mobile portrait */
+@media screen and (max-width: $mq-mobile-portrait) {
+    .welcomeScreen {
+        padding-top: 0 !important;
+        position: relative;
+        .welcomeImage {
+            img {
+                width: 100%;
+            }
+        }
+        .welcomeContent {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 20px 0;
+            background-color: $primary-color;
+            h2 {
+                font-weight: 200;
+                font-size: 18px;
+                color: $white;
+                line-height: 1.4;
+                margin-bottom: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                letter-spacing: 0.6px;
+            }
+            h3 {
+                font-weight: 200;
+                font-size: 12px;
+                color: $white;
+                line-height: 1.1;
+                padding: 0 20px;
+                margin-bottom: 20px;
+                letter-spacing: 0.6px;
+            }
+            .ipay-global-btn {
+                margin: 0 5px 10px 5px;
+                font-size: 10px !important;
+                &.btn-primary {
+                    border: 1px solid $ipay-secondary;
+                }
+            }
+            .buttonGroup {
+                .download-mobile-app {
+                    width: 125px;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .shoppingPromotion2 {
+        position: relative;
+        padding: 0;
+        .shoppingPromotion-image {
+            background-image: none;
+            min-height: inherit;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .shoppingPromotion-content {
+            bottom: 0;
+            position: relative;
+            left: 0%;
+            right: 0%;
+            padding: 20px 0;
+            background-color: $ipay-primary;
+            h2 {
+                font-weight: 200;
+                font-size: 20px;
+                color: $white;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                padding-left: 0;
+            }
+            p {
+                font-weight: 300;
+                color: $white;
+                font-size: 12px;
+                padding-left: 0
+            }
+        }
+    }
+    .portlet.light.modified {
+        padding: 20px 20px;
+    }
+    .businessSolution h2, .shoppingPromotion h2 {
+        font-size: 20px;
+    }
+    .mobile-only {
+        display: block;
+    }
+    .desktop-only {
+        display: none;
+    }
+    .btn-sm {
+        padding: 10px 20px;
+    }
+    .nav-pills > li > a, .nav-tabs > li > a {
+        font-size: 12px;
+    }
+    .shadowBox {
+        width: 270px;
+    }
+    .paraTitle {
+        font-size: 14px;
+    }
+    .footerContent {
+        .list-inline > li {
+            padding-left: 3px;
+        }
+    }
+    footer .footerMenu ul li a, footer .footerTop ul li a {
+        font-size: 13px;
+    }
+    .ipay-brand-bg {
+        .portlet-title {
+            .caption {
+                .caption-subject {
+                    font-weight: 300 !important;
+                }
+                .caption-helper {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+    .page-header {
+        .page-header-top {
+            .top-menu {
+                .navbar-nav {
+                    .balance-amount {
+                        float: right;
+                        font-size: 13px;
+                    }
+                }
+                .navbar-nav > li.dropdown.dropdown-notification {
+                    margin-left: 5px;
+                    padding-left: 5px !important;
+                }
+                .navbar-nav > li.dropdown.dropdown-user {
+                    padding-left: 8px !important;
+                }
+            }
+            .menu-toggler {
+                width: 30px;
+            }
+            .top-menu .navbar-nav > li {
+                padding-left: 10px !important;
+            }
+        }
+        .page-header-top > .container {
+            padding-left: 5px;
+            padding-right: 5px;
+            .page-logo {
+                margin-left: 0;
+                img {
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+    .offer-img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        height: 275px;
+    }
+}
+
+@media only screen and (max-width: 670px) and (orientation: landscape) {
+
+}
