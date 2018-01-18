@@ -12,15 +12,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
-    $basic_color: #2c3e50;
-
+<style lang="scss" scoped>
+    $base_color: red;
+    $base_size: 60px;
     .app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: $basic_color;
-        margin-top: 60px;
+        color: $base_color;
+        margin-top: $base_size;
     }
 </style>
