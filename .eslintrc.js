@@ -53,6 +53,7 @@ module.exports = {
             'exports': 'never',
             'functions': 'ignore'
         }],
-        'object-curly-spacing': ["error", "never"]
+        'object-curly-spacing': ['error', 'never'],
+        'max-len': ['error', {'code': 300}]
     }
 };
