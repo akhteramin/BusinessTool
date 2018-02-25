@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Title from './Title';
 import Http from '../services/Http';
 
 class Campaign extends Component {
@@ -24,7 +25,7 @@ class Campaign extends Component {
     render() {
         return (
             <div>
-                <h1>Campaign</h1>
+                <Title value="Campaign" />
             </div>
         );
     }
