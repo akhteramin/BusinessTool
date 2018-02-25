@@ -13,11 +13,12 @@ class Campaign extends Component {
     componentWillMount() {
         Http.GET('get_posts')
         .then(data => {
-            console.log("Success: ", JSON.stringify(data, null, 2));
+            let campaigns = this.state.campaigns.slice();
+            campaigns.push(data);
+            let [x] = campaigns;
+            this.setState({ campaigns: x });
 
-            this.setState({
-                campaigns: [...this.state.campaigns, data]
-            });
+            console.log("Success Campains: ", JSON.stringify(this.state.campaigns, null, 2));
         })
         .catch(error => console.error(error));
     }
@@ -26,6 +27,11 @@ class Campaign extends Component {
         return (
             <div>
                 <Title value="Campaign" />
+                <ul>
+                    {this.state.campaigns.map((item, index) => (
+                        <li className='indent'> { item.title } </li>
+                    ))}
+                </ul>
             </div>
         );
     }
