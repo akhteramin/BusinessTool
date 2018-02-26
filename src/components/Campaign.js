@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Title from './Title';
+import Subtitle from './Subtitle';
 import Http from '../services/Http';
 
 class Campaign extends Component {
@@ -11,7 +11,7 @@ class Campaign extends Component {
     }
 
     componentWillMount() {
-        Http.GET('get_posts')
+        Http.GET('get_comments')
         .then(data => {
             this.setState({
                 campaigns: [...this.state.campaigns, ...data]
@@ -23,17 +23,35 @@ class Campaign extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-10 col-md-offset-1">
-                        <Title value="Campaign"/>
-                        <ul>
+            <div>
+                <Subtitle value="Campaign"/>
+                <div className="table-responsive">
+                    <table className="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Body</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                             { this.state.campaigns.map((item, index) => (
-                                <li className='indent'> { item.title } </li> )) }
-                        </ul>
-                    </div>
+                                <tr>
+                                    <td> { item.postId } </td>
+                                    <td> { item.id } </td>
+                                    <td> { item.name } </td>
+                                    <td> { item.email } </td>
+                                    <td> { item.body } </td>
+                                </tr>
+                            )) }
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+
         );
     }
 }
