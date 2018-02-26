@@ -13,12 +13,11 @@ class Campaign extends Component {
     componentWillMount() {
         Http.GET('get_posts')
         .then(data => {
-            let campaigns = this.state.campaigns.slice();
-            campaigns.push(data);
-            let [x] = campaigns;
-            this.setState({ campaigns: x });
+            this.setState({
+                campaigns: [...this.state.campaigns, ...data]
+            });
 
-            console.log("Success Campains: ", JSON.stringify(this.state.campaigns, null, 2));
+            console.log("Success campaigns: ", JSON.stringify(this.state.campaigns, null, 2));
         })
         .catch(error => console.error(error));
     }
