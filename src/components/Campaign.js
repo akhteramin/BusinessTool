@@ -16,7 +16,6 @@ class Campaign extends Component {
             this.setState({
                 campaigns: [...this.state.campaigns, ...data]
             });
-
             console.log("Success campaigns: ", JSON.stringify(this.state.campaigns, null, 2));
         })
         .catch(error => console.error(error));
@@ -27,9 +26,7 @@ class Campaign extends Component {
             <div>
                 <Title value="Campaign" />
                 <ul>
-                    {this.state.campaigns.map((item, index) => (
-                        <li className='indent'> { item.title } </li>
-                    ))}
+                    { this.state.campaigns.map((item, index) => ( <li className='indent'> { item.title } </li> )) }
                 </ul>
             </div>
         );
