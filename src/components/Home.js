@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import Title from './Title';
-import Campaign from './Campaign';
+import CampaignList from './CampaignList';
 
 class Home extends Component {
     render() {
@@ -9,7 +11,10 @@ class Home extends Component {
                 <div className="row">
                     <div className="col-sm-3 col-md-2 sidebar">
                         <ul className="nav nav-sidebar">
-                            <li className="active"><a href="https://www.ipay.com.bd">Overview <span className="sr-only">(current)</span></a></li>
+                            <li className="active">
+                                <a href="https://www.ipay.com.bd">Overview <span className="sr-only">(current)</span></a>
+                                <Link to="/app/campaign/new">Create Campaign</Link>
+                            </li>
                             <li><a href="https://www.ipay.com.bd">Reports</a></li>
                             <li><a href="https://www.ipay.com.bd">Analytics</a></li>
                             <li><a href="https://www.ipay.com.bd">Export</a></li>
@@ -53,7 +58,7 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        <Campaign/>
+                        <CampaignList/>
                     </div>
                 </div>
             </div>

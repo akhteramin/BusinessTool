@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Subtitle from './Subtitle';
 import Http from '../services/Http';
 
-class Campaign extends Component {
+class CampaignList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,10 +50,8 @@ class Campaign extends Component {
                     </table>
                 </div>
             </div>
-
-
         );
     }
 }
 
-export default Campaign;
+export default CampaignList;
