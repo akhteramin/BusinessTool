@@ -16,18 +16,23 @@ class Campaign extends Component {
             this.setState({
                 campaigns: [...this.state.campaigns, ...data]
             });
-            console.log("Success campaigns: ", JSON.stringify(this.state.campaigns, null, 2));
+            console.log('Success campaigns: ', JSON.stringify(this.state.campaigns, null, 2));
         })
         .catch(error => console.error(error));
     }
 
     render() {
         return (
-            <div>
-                <Title value="Campaign" />
-                <ul>
-                    { this.state.campaigns.map((item, index) => ( <li className='indent'> { item.title } </li> )) }
-                </ul>
+            <div className="container-fluid">
+                <div className="row justify-content-md-center">
+                    <div className="col-8">
+                        <Title value="Campaign"/>
+                        <ul>
+                            { this.state.campaigns.map((item, index) => (
+                                <li className='indent'> { item.title } </li> )) }
+                        </ul>
+                    </div>
+                </div>
             </div>
         );
     }
