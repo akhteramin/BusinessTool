@@ -24,8 +24,8 @@ class Campaign extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="row justify-content-md-center">
-                    <div className="col-8">
+                <div className="row">
+                    <div className="col-md-10 col-md-offset-1">
                         <Title value="Campaign"/>
                         <ul>
                             { this.state.campaigns.map((item, index) => (

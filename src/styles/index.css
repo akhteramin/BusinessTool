@@ -68,3 +68,9 @@ h1 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
+
+/* Customize navbar for iPay */
+.navbar-custom {
+    background-color: #00B2A2;
+    border-color: #00D3C0;
+}
