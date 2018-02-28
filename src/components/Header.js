@@ -12,7 +12,7 @@ class Header extends Component {
                             <span className="icon-bar"/>
                             <span className="icon-bar"/>
                         </button>
-                        <a className="navbar-brand" href="https://www.ipay.com.bd">Project name</a>
+                        <a className="navbar-brand" href="https://www.ipay.com.bd">iPay Bizz Tool</a>
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
