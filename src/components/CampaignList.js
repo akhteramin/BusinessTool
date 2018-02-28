@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Subtitle from './Subtitle';
+import CampaignItem from './CampaignItem';
 import Http from '../services/Http';
 
 class CampaignList extends Component {
@@ -8,6 +9,12 @@ class CampaignList extends Component {
         this.state = {
             campaigns: []
         };
+    }
+
+    deleteItem(id) {
+        this.setState({
+            campaigns: this.state.campaigns.filter(x => x.id !== id)
+        });
     }
 
     componentWillMount() {
@@ -34,18 +41,12 @@ class CampaignList extends Component {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Body</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                            { this.state.campaigns.map((item, index) => (
-                                <tr>
-                                    <td> { item.postId } </td>
-                                    <td> { item.id } </td>
-                                    <td> { item.name } </td>
-                                    <td> { item.email } </td>
-                                    <td> { item.body } </td>
-                                </tr>
-                            )) }
+                        { this.state.campaigns.map((item, index) => <CampaignItem
+                            remove={ this.deleteItem.bind(this) } value={ item }/>) }
                         </tbody>
                     </table>
                 </div>
