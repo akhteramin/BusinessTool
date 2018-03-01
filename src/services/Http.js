@@ -1,4 +1,4 @@
-const headers = {'content-type': 'application/json'};
+const headers = {'content-type': 'application/json','Accept': 'application/json'};
 const mm = 'https://jsonplaceholder.typicode.com';
 
 const routes = {
@@ -10,6 +10,14 @@ const Http = {
     GET: (key) => {
         return fetch(routes[key], {
             method: 'GET',
+            headers
+        })
+        .then(response => response.json());
+    },
+    POST: (key,data) => {
+        return fetch(routes[key], {
+            method: 'POST',
+            body: data,
             headers
         })
         .then(response => response.json());

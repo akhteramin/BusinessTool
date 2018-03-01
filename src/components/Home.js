@@ -12,25 +12,10 @@ class Home extends Component {
                     <div className="col-sm-3 col-md-2 sidebar">
                         <ul className="nav nav-sidebar">
                             <li className="active">
-                                <a href="https://www.ipay.com.bd">Overview <span className="sr-only">(current)</span></a>
                                 <Link to="/app/campaign/new">Create Campaign</Link>
                             </li>
-                            <li><a href="https://www.ipay.com.bd">Reports</a></li>
-                            <li><a href="https://www.ipay.com.bd">Analytics</a></li>
-                            <li><a href="https://www.ipay.com.bd">Export</a></li>
                         </ul>
-                        <ul className="nav nav-sidebar">
-                            <li><a href="">Nav item</a></li>
-                            <li><a href="">Nav item again</a></li>
-                            <li><a href="">One more nav</a></li>
-                            <li><a href="">Another nav item</a></li>
-                            <li><a href="">More navigation</a></li>
-                        </ul>
-                        <ul className="nav nav-sidebar">
-                            <li><a href="">Nav item again</a></li>
-                            <li><a href="">One more nav</a></li>
-                            <li><a href="">Another nav item</a></li>
-                        </ul>
+                       
                     </div>
                     <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                         <Title value="Dashboard"/>
