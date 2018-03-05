@@ -545,7 +545,7 @@ $align: (left, center, right, top, middle, bottom);
     content: "#{inspect(gridle_get_state((
 		min-width : 200px,
 		max-width : 600px
-	))) } ";
+	))) }   ";
 }
 
 // gridle_has_state
