@@ -31,7 +31,7 @@ class CampaignList extends Component {
     render() {
         return (
             <div>
-                <Subtitle value="Campaign"/>
+                <Subtitle value="Dummy Campaigns"/>
                 <div className="table-responsive">
                     <table className="table table-striped">
                         <thead>

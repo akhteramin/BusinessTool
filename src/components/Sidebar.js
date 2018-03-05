@@ -10,6 +10,12 @@ const Sidebar = (props) => {
             <li>
                 <Link to="/app/campaign/new">Create Campaign</Link>
             </li>
+            <li>
+                <a href="#">Manage Campaign</a>
+            </li>
+            <li>
+                <Link to="/login">Logout</Link>
+            </li>
         </ul>
     );
 };

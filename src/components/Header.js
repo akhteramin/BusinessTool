@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import white_ipay_logo from '../images/white-ipay-logo.png';
 
-var menuHeaderColor = {
-    background: '#1bb1a5',
-    border: '0px'
+const menuHeaderColor = {
+    background: '#1BB1A5',
+    border: 0
 };
-var headerFontColor = {
+
+const headerFontColor = {
     color: 'white'
 };
-var iconPosition = {
-    float: 'left'
+
+const iconPosition = {
+    float: 'left',
+    padding: '5px',
+    'margin-left': '38px'
 };
 
 class Header extends Component {
@@ -31,9 +35,9 @@ class Header extends Component {
                             <span className="icon-bar"/>
                         </button>
                         <img style={ iconPosition } className="text-left margin-5"
-                             src={ white_ipay_logo } alt="ipay" width="110" height="50"/>
+                             src={ white_ipay_logo } alt="iPay Logo" width="auto" height="38"/>
                         <a style={ headerFontColor } className="navbar-brand"
-                           href="https://www.ipay.com.bd">iPay Bizz Tool</a>
+                           href="https://www.ipay.com.bd">Bizz Tool</a>
                     </div>
                     { /* <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
