@@ -1,5 +1,5 @@
 @mixin button-bg($bg) {
-    background-color:$bg  ; /* Ash */
+    background-color: $bg; /* Ash */
     border: none;
     color: white;
     padding: 5px 15px;
@@ -12,13 +12,13 @@
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     &:hover {
-        color:white;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
-    
-  }
 
-@mixin input-box(){
+}
+
+@mixin input-box() {
     width: 100%;
     padding: 5px 5px;
     box-sizing: border-box;
@@ -32,7 +32,7 @@
     }
 }
 
-@mixin set-background($color){
+@mixin set-background($color) {
     background: $color;
 
     // &:hover {
@@ -41,48 +41,48 @@
     //   }
 }
 
-@mixin set-hover($color){
+@mixin set-hover($color) {
     // background: $color;
 
     &:hover {
-        background:darken($color, 12%);
+        background: darken($color, 12%);
         transition: all 0.3s ease;
     }
     &:active {
-        background:darken($color, 12%);
-    } 
+        background: darken($color, 12%);
+    }
 }
 
-@mixin set-font($color,$fontfamily,$alignment,$textdecoration,$spacing,$size){
+@mixin set-font($color,$fontfamily,$alignment,$textdecoration,$spacing,$size) {
     color: $color;
     font-family: $fontfamily;
     text-align: $alignment;
-    text-decoration:$textdecoration;
+    text-decoration: $textdecoration;
     letter-spacing: $spacing;
     font-size: $size;
 }
 
-@mixin set-pointer(){
+@mixin set-pointer() {
     cursor: pointer;
 }
 
-@mixin set-anchorage-list(){
-    a{
+@mixin set-anchorage-list() {
+    a {
         text-decoration: none !important;
         color: black;
         font-size: 13px;
     }
-    li{
+    li {
         padding: 10px 0px 10px 50px;
         margin: 0px;
-        @include set-hover(#f9f9f9);    
+        @include set-hover(#f9f9f9);
     }
 }
 
-@mixin set-font-color($color){
+@mixin set-font-color($color) {
     color: $color;
 }
 
-@mixin set-font-size($size){
-    font-size:$size;
+@mixin set-font-size($size) {
+    font-size: $size;
 }

@@ -4,6 +4,6 @@ import Routes from './routes';
 
 export default () => (
     <div>
-        <Routes />
+        <Routes/>
     </div>
 );

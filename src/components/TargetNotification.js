@@ -5,7 +5,7 @@ class TargetNotification extends Component {
     render() {
         return (
             <div>
-               <Subtitle value="Target Notification"/>
+                <Subtitle value="Target Notification"/>
             </div>
         );
     }

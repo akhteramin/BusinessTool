@@ -6,13 +6,11 @@
  * here.
  *
  */
-
 /**
  * Styles shared by multiple animations
  */
 @import 'variables';
 @import 'mixins';
-
 /**
  * Dots
  */
@@ -36,7 +34,6 @@
 @import 'animations/ball-spin-loader';
 @import 'animations/ball-zig-zag';
 @import 'animations/ball-zig-zag-deflect';
-
 /**
  * Lines
  */
@@ -45,7 +42,6 @@
 @import 'animations/line-scale-pulse-out';
 @import 'animations/line-scale-pulse-out-rapid';
 @import 'animations/line-spin-fade-loader';
-
 /**
  * Misc
  */

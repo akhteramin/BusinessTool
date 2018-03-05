@@ -9,9 +9,10 @@ select {
     border: 0 !important;
     background: #ffffff;
     background-image: none;
-  }
-  /* Custom Select */
-  .select {
+}
+
+/* Custom Select */
+.select {
     position: relative;
     display: block;
     width: 100%;
@@ -23,19 +24,21 @@ select {
     border: 3px solid #ccc;
 }
 
-  select {
+select {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0 0 0 .5em;
     color: rgb(0, 0, 0);
     cursor: pointer;
-  }
-  select::-ms-expand {
+}
+
+select::-ms-expand {
     display: none;
-  }
-  /* Arrow */
-  .select::after {
+}
+
+/* Arrow */
+.select::after {
     content: '\25BC';
     position: absolute;
     top: 0;
@@ -44,37 +47,39 @@ select {
     padding: 0 1em;
     background: #ffffff;
     pointer-events: none;
-  }
-  /* Transition */
-  .select:hover {
+}
+
+/* Transition */
+.select:hover {
     color: #000000;
     border: 2px solid $ipay-color;
-    
-  }
-  .select::after {
+
+}
+
+.select::after {
     -webkit-transition: .25s all ease;
     -o-transition: .25s all ease;
     transition: .25s all ease;
-  }
+}
 
-  .select-sm{
+.select-sm {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
     width: 70% !important;
     height: 2.1em !important;
-  }
+}
 
-  .select-md{
+.select-md {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
     width: 66% !important;
 }
 
 .selected {
-  background-color: #019889;
-  color: #fff;
+    background-color: #019889;
+    color: #fff;
 }
 
-.background-nonclickable{
-  pointer-events: none;
+.background-nonclickable {
+    pointer-events: none;
 }
