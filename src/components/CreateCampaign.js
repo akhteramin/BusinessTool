@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Title from './Title';
 import Subtitle from './Subtitle';
-import Header from './Header';
 import Http from '../services/Http';
 
 class CreateCampaign extends Component {
@@ -29,12 +29,12 @@ class CreateCampaign extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { offerType, offerName } = this.state;
+        const {offerType, offerName} = this.state;
 
         // const data = new FormData(e.target);
         // const data = e.target.value;
 
-        console.log('Post Campaign: ', JSON.stringify({ offerType, offerName }, null, 2));
+        console.log('Post Campaign: ', JSON.stringify({offerType, offerName}, null, 2));
 
         // Http.POST('offer', { offerType, offerName })
         // .then(
@@ -50,41 +50,44 @@ class CreateCampaign extends Component {
     render() {
         const {offerType, offerName} = this.state;
         return (
-            <div className="row">
-                <Header/>
-                <div className="col-md-4 col-md-offset-4">
-                    <Subtitle value="New Campaign"/>
-                    <form onSubmit={ this.handleSubmit }>
-                        <div className="form-group">
-                            <label>Offer Type</label>
-                            <input type="text"
-                                   className="form-control"
-                                   name="offerType"
-                                   id="offerType"
-                                   placeholder="Offer Type"
-                                   value={ offerType }
-                                   onChange={ this.onChange }/>
-                        </div>
-                        <div className="form-group">
-                            <label>Offer Name</label>
-                            <input type="text"
-                                   className="form-control"
-                                   name="offerName"
-                                   id="offerName"
-                                   placeholder="Offer Name"
-                                   value={ offerName }
-                                   onChange={ this.onChange }/>
-                        </div>
+            <div>
+                <Title value="Create New Campaign"/>
+                <div className="row">
+                    <div className="col-md-4 col-md-offset-4">
+                        { /*<Subtitle value="New Campaign"/>*/ }
+                        <form onSubmit={ this.handleSubmit }>
+                            <div className="form-group">
+                                <label>Offer Type</label>
+                                <input type="text"
+                                       className="form-control"
+                                       name="offerType"
+                                       id="offerType"
+                                       placeholder="Offer Type"
+                                       value={ offerType }
+                                       onChange={ this.onChange }/>
+                            </div>
+                            <div className="form-group">
+                                <label>Offer Name</label>
+                                <input type="text"
+                                       className="form-control"
+                                       name="offerName"
+                                       id="offerName"
+                                       placeholder="Offer Name"
+                                       value={ offerName }
+                                       onChange={ this.onChange }/>
+                            </div>
 
-                        <button type="submit" className="btn btn-default">Create Campaign
-                        </button>
-                        <button onClick={ this.backHome }
-                                className="btn btn-danger margin-left-5">Cancel
-                        </button>
+                            <button type="submit" className="btn btn-default">Create Campaign
+                            </button>
+                            <button onClick={ this.backHome }
+                                    className="btn btn-danger margin-left-5">Cancel
+                            </button>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+
         );
     }
 }

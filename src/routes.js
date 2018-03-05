@@ -18,7 +18,7 @@ export default () => (
             <Route component={ CreateCampaign }
                    path="/app/campaign/new"
                    exact/>
-            <Redirect from="/" exact to="/login" />
+            <Redirect from="/" exact to="/login"/>
             <Route component={ NotFound }/>
         </Switch>
     </BrowserRouter>
