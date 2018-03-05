@@ -1,30 +1,32 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './styles/index.css';
-// import Main from './Main';
-// import registerServiceWorker from './registerServiceWorker';
-//
-// ReactDOM.render(<Main/>, document.getElementById('root'));
-// registerServiceWorker();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './styles/index.css';
+import './styles/sass/stylesheets/styles.css';
 
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import store, { history } from './store'
-import App from './containers/app'
+import Main from './Main';
+import registerServiceWorker from './registerServiceWorker';
 
-import './styles/index.css'
+ReactDOM.render(<Main/>, document.getElementById('root'));
+registerServiceWorker();
 
-const target = document.querySelector('#root')
+// import React from 'react'
+// import { render } from 'react-dom'
+// import { Provider } from 'react-redux'
+// import { ConnectedRouter } from 'react-router-redux'
+// import store, { history } from './store'
+// import App from './containers/app'
 
-render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <div>
-                <App />
-            </div>
-        </ConnectedRouter>
-    </Provider>,
-    target
-)
+// import './styles/index.css'
+
+// const target = document.querySelector('#root')
+
+// render(
+//     <Provider store={store}>
+//         <ConnectedRouter history={history}>
+//             <div>
+//                 <App />
+//             </div>
+//         </ConnectedRouter>
+//     </Provider>,
+//     target
+// )
