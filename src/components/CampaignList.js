@@ -45,7 +45,7 @@ class CampaignList extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        { this.state.campaigns.map((item, index) => <CampaignItem
+                        { this.state.campaigns.map((item, index) => <CampaignItem key={index}
                             remove={ this.deleteItem.bind(this) } value={ item }/>) }
                         </tbody>
                     </table>

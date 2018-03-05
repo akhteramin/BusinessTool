@@ -13,7 +13,7 @@ const headerFontColor = {
 const iconPosition = {
     float: 'left',
     padding: '5px',
-    'margin-left': '38px'
+    marginLeft: '38px'
 };
 
 class Header extends Component {
