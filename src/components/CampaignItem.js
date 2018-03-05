@@ -9,7 +9,6 @@ class CampaignItem extends Component {
         const {value: item} = this.props;
         return (
             <tr>
-                <td> { item.postId } </td>
                 <td> { item.id } </td>
                 <td> { item.name } </td>
                 <td> { item.email } </td>

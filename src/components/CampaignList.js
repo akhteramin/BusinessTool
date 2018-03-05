@@ -36,7 +36,6 @@ class CampaignList extends Component {
                     <table className="table table-striped">
                         <thead>
                         <tr>
-                            <th>#</th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
