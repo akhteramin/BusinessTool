@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-
 import Title from './Title';
 
-class Home extends Component {
+class Notifications extends Component {
     render() {
+
         return (
             <div>
-                <Title value="Home"/>
+                <Title value="Notifications"/>
             </div>
         );
     }
 }
 
-export default Home;
+export default Notifications;

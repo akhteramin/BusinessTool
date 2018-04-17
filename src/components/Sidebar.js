@@ -23,13 +23,13 @@ class Sidebar extends Component {
                 </div>
 
                 <ul className="list-unstyled components">
-                    <NavItem path="/app/settlement-reconciliation">
+                    <NavItem path="/app/target-group">
                         <i className="glyphicon glyphicon-link"/>
-                        Settlement Reconciliation
+                        Target Group
                     </NavItem>
-                    <NavItem path="/app/bank-statements">
+                    <NavItem path="/app/notifications">
                         <i className="glyphicon glyphicon-paperclip"/>
-                        Bank Statements
+                        Notifications
                     </NavItem>
 
                     { /*<li className="active">*/ }

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-
 import Title from './Title';
 
-class Home extends Component {
+class TargetGroup extends Component {
     render() {
+
         return (
             <div>
-                <Title value="Home"/>
+                <Title value="Target Group"/>
             </div>
         );
     }
 }
 
-export default Home;
+export default TargetGroup;

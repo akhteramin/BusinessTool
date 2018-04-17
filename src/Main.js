@@ -6,8 +6,8 @@ import PublicLayout from './components/PublicLayout';
 
 import Home from './components/Home';
 import Login from './components/Login';
-import SettlementReconciliation from './components/SettlementReconciliation';
-import BankStatements from './components/BankStatements';
+import TargetGroup from './components/TargetGroup';
+import Notifications from './components/Notifications';
 import ManageCampaign from './components/ManageCampaign';
 import NotFound from './components/NotFound';
 
@@ -41,10 +41,9 @@ class Main extends Component {
                     </Route>
                     <PublicRoute path="/login" component={ Login }/>
                     <PrivateRoute path="/app/home" component={ Home }/>
-                    <PrivateRoute path="/app/settlement-reconciliation"
-                                  component={ SettlementReconciliation }/>
-                    <PrivateRoute path="/app/bank-statements/:id" component={ BankStatements }/>
-                    <PrivateRoute path="/app/bank-statements" component={ BankStatements }/>
+                    <PrivateRoute path="/app/target-group"
+                                  component={ TargetGroup }/>
+                    <PrivateRoute path="/app/notifications" component={ Notifications }/>
                     <PrivateRoute path="/app/campaign/manage" component={ ManageCampaign }/>
                     <Route component={ NotFound }/>
                 </Switch>
