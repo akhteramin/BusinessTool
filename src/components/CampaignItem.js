@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class CampaignItem extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {value: item} = this.props;
         return (
@@ -16,7 +12,7 @@ class CampaignItem extends Component {
                 <td>
                     <button className="btn btn-danger btn-sm" type="submit"
                             onClick={ () => this.props.remove(item.id) }>
-                        <i className="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                        <i className="glyphicon glyphicon-trash" aria-hidden="true"/>
                     </button>
                 </td>
             </tr>

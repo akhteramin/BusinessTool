@@ -371,7 +371,7 @@
     }
     .navbar-right {
         float: right !important;
-        margin-right: -$navbar-padding-horizontal;
+        margin-right: $navbar-padding-horizontal;
 
         ~ .navbar-right {
             margin-right: 0;
@@ -535,7 +535,7 @@
 
     .navbar-nav {
         > li > a {
-            color: $navbar-inverse-link-color;
+            color: $navbar-inverse-brand-hover-color;
 
             &:hover,
             &:focus {

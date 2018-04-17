@@ -19,9 +19,9 @@ class CampaignList extends Component {
 
     componentWillMount() {
         Http.GET('get_comments')
-        .then(data => {
+        .then(response => {
             this.setState({
-                campaigns: [...this.state.campaigns, ...data]
+                campaigns: [...this.state.campaigns, ...response.data]
             });
             console.log('Success campaigns: ', JSON.stringify(this.state.campaigns, null, 2));
         })

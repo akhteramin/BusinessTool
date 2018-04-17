@@ -9,24 +9,9 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(<Main/>, document.getElementById('root'));
 registerServiceWorker();
 
-// import React from 'react'
-// import { render } from 'react-dom'
-// import { Provider } from 'react-redux'
-// import { ConnectedRouter } from 'react-router-redux'
-// import store, { history } from './store'
-// import App from './containers/app'
+/**
+ * Hot Module Replacement (HMR)
+ * */
 
-// import './styles/index.css'
+module.hot && module.hot.accept();
 
-// const target = document.querySelector('#root')
-
-// render(
-//     <Provider store={store}>
-//         <ConnectedRouter history={history}>
-//             <div>
-//                 <App />
-//             </div>
-//         </ConnectedRouter>
-//     </Provider>,
-//     target
-// )

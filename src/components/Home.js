@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+// import StatementSummery from './StatementSummery';
 
 import Title from './Title';
-import CampaignList from './CampaignList';
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <Title value="Dashboard"/>
-                <CampaignList/>
+                <Title value="Home"/>
+                {/*<StatementSummery/>*/}
             </div>
         );
     }
