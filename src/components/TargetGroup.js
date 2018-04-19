@@ -2,29 +2,43 @@ import React, { Component } from 'react';
 import Http from '../services/Http';
 import Title from './Title';
 
+const Options = props => props.data.map(({id, value}) => <option key={ id }>{ value }</option>);
+
 class TargetGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            criteria: []
+            criteria: {},
+            selected_criteria: []
         };
+
+        this.handelSelect = this.handelSelect.bind(this);
+    }
+
+    handelSelect(event) {
+        console.log(event.target.value);
     }
 
     componentWillMount() {
         Http.GET('getCriteria')
         .then(response => {
-            this.setState({
-                criteria: [
-                    ...this.state.criteria,
-                    ...response.data
-                ]
+
+            let criteria = {};
+            response.data.forEach(({id, criterionName: name, displayValue: value}) => {
+                if (!criteria[name]) {
+                    criteria[name] = [];
+                }
+                criteria[name].push({id, value});
             });
+
+            this.setState({criteria});
             console.log('Success criteria: ', JSON.stringify(this.state.criteria, null, 2));
         })
         .catch(error => console.error(error));
     }
 
     render() {
+        const {criteria} = this.state;
         return (
             <div>
                 <Title value="Target Group"/>
@@ -40,17 +54,32 @@ class TargetGroup extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="criteria">Criteria</label>
-                                <select multiple className="form-control selectpicker" id="criteria">
-                                    <optgroup label="Picnic">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    </optgroup>
-                                    <optgroup label="Camping">
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    </optgroup>
+                                <select multiple className="form-control selectpicker" id="criteria"
+                                        onChange={this.handelSelect}
+                                        disabled={ Object.keys(criteria).length === 0 && criteria.constructor === Object }>
+                                    { Object.keys(criteria).map(key => (<optgroup label={ key } key={ key }>
+                                        <Options data={ criteria[key] }/>
+                                    </optgroup>)) }
                                 </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="description">Description</label>
+                                <textarea className="form-control"
+                                          id="description"
+                                          name="description"
+                                          rows="4"/>
+                            </div>
+                            <div className="form-group">
+                                <div className="checkbox">
+                                    <label htmlFor="isFacebookShare">
+                                        <input type="checkbox"
+                                               id="isFacebookShare"
+                                               name="isFacebookShare"/>
+                                        <small style={ {marginTop: 2, display: 'block'} }>Share in
+                                            Facebook
+                                        </small>
+                                    </label>
+                                </div>
                             </div>
                             <button type="submit" className="btn btn-default">Submit</button>
                         </form>
@@ -65,3 +94,97 @@ class TargetGroup extends Component {
 }
 
 export default TargetGroup;
+/*
+[
+    {
+        "id": 1,
+        "criterionName": "Account Type",
+        "displayValue": "Personal",
+        "bucket": "personal_members"
+    },
+    {
+        "id": 2,
+        "criterionName": "Account Type",
+        "displayValue": "Business",
+        "bucket": "business_members"
+    },
+    {
+        "id": 3,
+        "criterionName": "Verification Status",
+        "displayValue": "Verified",
+        "bucket": "verified_members"
+    },
+    {
+        "id": 4,
+        "criterionName": "Verification Status",
+        "displayValue": "Not verified",
+        "bucket": "not_verified_members"
+    },
+    {
+        "id": 5,
+        "criterionName": "Verification Status",
+        "displayValue": "In Progress",
+        "bucket": "in_progress_members"
+    },
+    {
+        "id": 6,
+        "criterionName": "Verification Status",
+        "displayValue": "Rejected",
+        "bucket": "rejected_members"
+    },
+    {
+        "id": 7,
+        "criterionName": "Profile Completion Score",
+        "displayValue": "0%",
+        "bucket": "profile_completion_score_0"
+    },
+    {
+        "id": 8,
+        "criterionName": "Profile Completion Score",
+        "displayValue": "25%",
+        "bucket": "profile_completion_score_25"
+    },
+    {
+        "id": 9,
+        "criterionName": "Profile Completion Score",
+        "displayValue": "50%",
+        "bucket": "profile_completion_score_50"
+    },
+    {
+        "id": 10,
+        "criterionName": "Profile Completion Score",
+        "displayValue": "75%",
+        "bucket": "profile_completion_score_75"
+    },
+    {
+        "id": 11,
+        "criterionName": "Profile Completion Score",
+        "displayValue": "100%",
+        "bucket": "profile_completion_score_100"
+    },
+    {
+        "id": 12,
+        "criterionName": "Mobile Operator",
+        "displayValue": "Grameenphone",
+        "bucket": "mobile_operator_gp"
+    },
+    {
+        "id": 13,
+        "criterionName": "Mobile Operator",
+        "displayValue": "Robi",
+        "bucket": "mobile_operator_grobi"
+    },
+    {
+        "id": 14,
+        "criterionName": "Mobile Operator",
+        "displayValue": "Banglalink",
+        "bucket": "mobile_operator_banglalink"
+    },
+    {
+        "id": 15,
+        "criterionName": "Mobile Operator",
+        "displayValue": "Teletalk",
+        "bucket": "mobile_operator_teletalk"
+    }
+]
+*/
