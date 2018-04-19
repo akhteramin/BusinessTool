@@ -115,3 +115,8 @@ h1 {
 .badge {
     font-weight: 400;
 }
+
+select {
+    border: 1px solid #ccc !important;
+}
+

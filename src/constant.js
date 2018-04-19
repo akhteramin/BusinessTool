@@ -24,7 +24,5 @@ export const categoryContainer = [
 
 export const API = {
     typicode: 'https://jsonplaceholder.typicode.com',
-    // bg: 'http://192.168.1.149:8087/internal/api/v1/bg' // Shuvo
-    bg: 'http://10.10.10.11:8087/internal/api/v1/bg' // DEV
-    // bg: 'http://10.200.40.206:8087/internal/api/v1/bg' // LIVE
+    bizz: 'http://10.10.10.10:8084/api' // DEV
 };
