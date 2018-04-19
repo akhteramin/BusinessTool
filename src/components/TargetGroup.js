@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import Http from '../services/Http';
 import Title from './Title';
+import Select from 'react-select-plus';
+import 'react-select-plus/dist/react-select-plus.css';
 
-const Options = props => props.data.map(({id, value}) => <option key={ id }>{ value }</option>);
+// const Options = props => props.data.map(({id, value}) => <option key={ id }>{ value }</option>);
 
 class TargetGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
             criteria: {},
-            selected_criteria: []
+            selected_criteria: [],
+            selectedOption: ''
         };
 
-        this.handelSelect = this.handelSelect.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handelSelect(event) {
-        console.log(event.target.value);
+    handleChange(selectedOption) {
+        this.setState({selectedOption});
+        console.log(`Selected: ${selectedOption.label}`);
     }
 
     componentWillMount() {
@@ -38,7 +42,26 @@ class TargetGroup extends Component {
     }
 
     render() {
-        const {criteria} = this.state;
+        const {criteria, selectedOption} = this.state;
+        const value = selectedOption && selectedOption.value;
+        const options = [
+            // {
+            //     label: 'Primary Colors',
+            //     options: [
+            //         {label: 'Yellow', value: 'yellow'},
+            //         {label: 'Red', value: 'red'},
+            //         {label: 'Blue', value: 'blue'}
+            //     ]
+            // },
+            // {
+            //     label: 'Secondary Colors',
+            //     options: [
+                    {label: 'Yellow', value: 'yellow'},
+                    {label: 'Red', value: 'red'},
+                    {label: 'Blue', value: 'blue'}
+            //     ]
+            // }
+        ];
         return (
             <div>
                 <Title value="Target Group"/>
@@ -54,13 +77,13 @@ class TargetGroup extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="criteria">Criteria</label>
-                                <select multiple className="form-control selectpicker" id="criteria"
-                                        onChange={this.handelSelect}
-                                        disabled={ Object.keys(criteria).length === 0 && criteria.constructor === Object }>
-                                    { Object.keys(criteria).map(key => (<optgroup label={ key } key={ key }>
-                                        <Options data={ criteria[key] }/>
-                                    </optgroup>)) }
-                                </select>
+                                <Select
+                                    name="form-field-name"
+                                    placeholder="Select your favourite(s)"
+                                    value={ value }
+                                    onChange={ this.handleChange }
+                                    options={ options }
+                                    multi simpleValue/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="description">Description</label>
