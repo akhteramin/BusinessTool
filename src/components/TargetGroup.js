@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import Http from '../services/Http';
 import Title from './Title';
+import spinner from '../images/ajax-loader.gif';
 
 class TargetGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
             criteria: {},
+            logicalCriteriaList: [], // Selected Criteria's id
             targetReach: 0
         };
+
         this.toggleCriteria = this.toggleCriteria.bind(this);
+        this.updateSelectedCriteria = this.updateSelectedCriteria.bind(this);
     }
 
     toggleCriteria(name, id) {
@@ -22,6 +26,38 @@ class TargetGroup extends Component {
                 [name]: criteria[name].map(obj => obj.id === id ? {...obj, isChecked: !obj.isChecked} : obj)
             }
         }));
+
+        this.updateSelectedCriteria();
+    }
+
+    updateSelectedCriteria() {
+        const {criteria} = this.state;
+        let logicalCriteriaList = [];
+
+        for (let i in criteria) {
+            if (criteria.hasOwnProperty(i)) {
+                criteria[i].forEach(item => {
+                    item.isChecked && logicalCriteriaList.push(item.id);
+                });
+
+                // for(let j = 0; j < criteria[i].length; j++) {
+                //     const {id, isChecked} = criteria[i][j];
+                //     isChecked && logicalCriteriaList.push(id);
+                // }
+            }
+        }
+
+        // Get reach data
+        if(logicalCriteriaList.length) {
+            Http.GET('targetGroups', `/${logicalCriteriaList.join(',')}/reach`)
+            .then(({data}) => {
+                console.log('Success criteria reach: ', data.count);
+                this.setState({
+                    targetReach: data.count
+                });
+            })
+            .catch(error => console.error(error));
+        }
     }
 
     componentDidMount() {
@@ -49,64 +85,65 @@ class TargetGroup extends Component {
                 <Title value="Target Group"/>
                 <div className="row">
                     <div className="col-md-4">
-                        <form>
-                            <div className="form-group">
-                                <label htmlFor="name">TG Name</label>
-                                <input type="text"
-                                       className="form-control"
-                                       id="name"
-                                       placeholder="TG Name"/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="criteria">TG Criteria</label>
-                                <span className="badge pull-right">{ targetReach }</span>
-                                <div className="panel panel-default">
-                                    <div className="panel-body">
-                                        { Object.keys(criteria).map((item, i) =>
-                                            <dl key={ item }>
-                                                <dt>{ `${(i + 1)}.  ${item}` }</dt>
-                                                <dd>
-                                                    <ul className="list-unstyled margin-left-15">
-                                                        { criteria[item].map(({id, value, isChecked}) =>
-                                                            <li key={ id }>
-                                                                <div className="checkbox margin-5">
-                                                                    <label>
-                                                                        <input type="checkbox"
-                                                                               checked={ isChecked }
-                                                                               onChange={ () => this.toggleCriteria(item, id) }/> { value }
-                                                                    </label>
-                                                                </div>
-                                                            </li>
-                                                        ) }
-                                                    </ul>
-                                                </dd>
-                                            </dl>
-                                        ) }
-
+                        { Object.keys(criteria).length === 0 && criteria.constructor === Object
+                            ? <img src={ spinner } style={ {width: 20, height: 20} } alt="Ajax Loader"/>
+                            : <form>
+                                <div className="form-group">
+                                    <label htmlFor="name">TG Name</label>
+                                    <input type="text"
+                                           className="form-control"
+                                           id="name"
+                                           placeholder="TG Name"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="criteria">TG Criteria</label>
+                                    <span className="badge pull-right">{ targetReach }</span>
+                                    <div className="panel panel-default">
+                                        <div className="panel-body">
+                                            { Object.keys(criteria).map((item, i) =>
+                                                <dl key={ item }>
+                                                    <dt>{ `${(i + 1)}.  ${item}` }</dt>
+                                                    <dd>
+                                                        <ul className="list-unstyled margin-left-15">
+                                                            { criteria[item].map(({id, value, isChecked}) =>
+                                                                <li key={ id }>
+                                                                    <div className="checkbox margin-5">
+                                                                        <label>
+                                                                            <input type="checkbox"
+                                                                                   checked={ isChecked }
+                                                                                   onChange={ () => this.toggleCriteria(item, id) }/> { value }
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+                                                            ) }
+                                                        </ul>
+                                                    </dd>
+                                                </dl>
+                                            ) }
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="description">Description</label>
-                                <textarea className="form-control"
-                                          id="description"
-                                          name="description"
-                                          rows="4"/>
-                            </div>
-                            <div className="form-group">
-                                <div className="checkbox">
-                                    <label htmlFor="isFacebookShare">
-                                        <input type="checkbox"
-                                               id="isFacebookShare"
-                                               name="isFacebookShare"/>
-                                        <small style={ {marginTop: 2, display: 'block'} }>Share in
-                                            Facebook
-                                        </small>
-                                    </label>
+                                <div className="form-group">
+                                    <label htmlFor="description">Description</label>
+                                    <textarea className="form-control"
+                                              id="description"
+                                              name="description"
+                                              rows="4"/>
                                 </div>
-                            </div>
-                            <button type="submit" className="btn btn-default">Submit</button>
-                        </form>
+                                <div className="form-group">
+                                    <div className="checkbox">
+                                        <label htmlFor="isFacebookShare">
+                                            <input type="checkbox"
+                                                   id="isFacebookShare"
+                                                   name="isFacebookShare"/>
+                                            <small style={ {marginTop: 2, display: 'block'} }>Share in
+                                                Facebook
+                                            </small>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" className="btn btn-default">Submit</button>
+                            </form> }
                     </div>
                     <div className="col-md-7 col-md-offset-1">
                         Lorem
