@@ -13,43 +13,37 @@ class TargetGroup extends Component {
         };
 
         this.toggleCriteria = this.toggleCriteria.bind(this);
-        this.updateSelectedCriteria = this.updateSelectedCriteria.bind(this);
+        this.updateCriteriaReach = this.updateCriteriaReach.bind(this);
     }
 
     toggleCriteria(name, id) {
         console.log('Criteria ID for Toggle: ', id);
+        let {logicalCriteriaList: list} = this.state;
+
+        let index = list.indexOf(id);
+        if (index > -1) {
+            list.splice(index, 1);
+        } else {
+            list.push(id);
+        }
 
         // Update isChecked of corresponding id
         this.setState(({criteria}) => ({
             criteria: {
                 ...criteria,
                 [name]: criteria[name].map(obj => obj.id === id ? {...obj, isChecked: !obj.isChecked} : obj)
-            }
+            },
+            logicalCriteriaList: list
         }));
 
-        this.updateSelectedCriteria();
+        this.updateCriteriaReach();
     }
 
-    updateSelectedCriteria() {
-        const {criteria} = this.state;
-        let logicalCriteriaList = [];
+    updateCriteriaReach() {
+        const {logicalCriteriaList: list} = this.state;
 
-        for (let i in criteria) {
-            if (criteria.hasOwnProperty(i)) {
-                criteria[i].forEach(item => {
-                    item.isChecked && logicalCriteriaList.push(item.id);
-                });
-
-                // for(let j = 0; j < criteria[i].length; j++) {
-                //     const {id, isChecked} = criteria[i][j];
-                //     isChecked && logicalCriteriaList.push(id);
-                // }
-            }
-        }
-
-        // Get reach data
-        if(logicalCriteriaList.length) {
-            Http.GET('targetGroups', `/${logicalCriteriaList.join(',')}/reach`)
+        if(list.length) {
+            Http.GET('targetGroups', `/${list.join(',')}/reach`)
             .then(({data}) => {
                 console.log('Success criteria reach: ', data.count);
                 this.setState({
