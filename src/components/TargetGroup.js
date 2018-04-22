@@ -9,6 +9,7 @@ class TargetGroup extends Component {
         this.state = {
             criteria: {},
             logicalCriteriaList: [], // Selected Criteria's id
+            isActive: true,
             targetReach: 0
         };
 
@@ -17,7 +18,6 @@ class TargetGroup extends Component {
     }
 
     toggleCriteria(name, id) {
-        console.log('Criteria ID for Toggle: ', id);
         let {logicalCriteriaList: list} = this.state;
 
         let index = list.indexOf(id);
@@ -45,7 +45,7 @@ class TargetGroup extends Component {
         if(list.length) {
             Http.GET('targetGroups', `/${list.join(',')}/reach`)
             .then(({data}) => {
-                console.log('Success criteria reach: ', data.count);
+                console.log('Reach Count: ', data.count);
                 this.setState({
                     targetReach: data.count
                 });
@@ -126,12 +126,11 @@ class TargetGroup extends Component {
                                 </div>
                                 <div className="form-group">
                                     <div className="checkbox">
-                                        <label htmlFor="isFacebookShare">
+                                        <label htmlFor="isActive">
                                             <input type="checkbox"
-                                                   id="isFacebookShare"
-                                                   name="isFacebookShare"/>
-                                            <small style={ {marginTop: 2, display: 'block'} }>Share in
-                                                Facebook
+                                                   id="isActive"
+                                                   name="isActive"/>
+                                            <small style={ {marginTop: 2, display: 'block'} }> Active
                                             </small>
                                         </label>
                                     </div>
