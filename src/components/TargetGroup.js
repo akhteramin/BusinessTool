@@ -19,13 +19,7 @@ class TargetGroup extends Component {
         this.setState(({criteria}) => ({
             criteria: {
                 ...criteria,
-                [name]: criteria[name].map(x => {
-                    if(x.id === id) {
-                        return { ...x, isChecked: !x.isChecked};
-                    }
-
-                    return x;
-                })
+                [name]: criteria[name].map(obj => obj.id === id ? {...obj, isChecked: !obj.isChecked} : obj)
             }
         }));
     }
@@ -65,25 +59,25 @@ class TargetGroup extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="criteria">TG Criteria</label>
-                                <span className="badge pull-right">{targetReach}</span>
+                                <span className="badge pull-right">{ targetReach }</span>
                                 <div className="panel panel-default">
                                     <div className="panel-body">
                                         { Object.keys(criteria).map((item, i) =>
-                                            <dl key={item}>
+                                            <dl key={ item }>
                                                 <dt>{ `${(i + 1)}.  ${item}` }</dt>
                                                 <dd>
                                                     <ul className="list-unstyled margin-left-15">
-                                                        {criteria[item].map(({id, value, isChecked}) =>
-                                                            <li key={id}>
+                                                        { criteria[item].map(({id, value, isChecked}) =>
+                                                            <li key={ id }>
                                                                 <div className="checkbox margin-5">
                                                                     <label>
                                                                         <input type="checkbox"
-                                                                               checked={isChecked}
-                                                                               onChange={() => this.toggleCriteria(item, id)}/> {value}
+                                                                               checked={ isChecked }
+                                                                               onChange={ () => this.toggleCriteria(item, id) }/> { value }
                                                                     </label>
                                                                 </div>
                                                             </li>
-                                                        )}
+                                                        ) }
                                                     </ul>
                                                 </dd>
                                             </dl>
