@@ -7,8 +7,27 @@ class TargetGroup extends Component {
         super(props);
         this.state = {
             criteria: {},
-            logicalCriteriaList: [] // Contains selected criteria id
+            targetReach: 0
         };
+        this.toggleCriteria = this.toggleCriteria.bind(this);
+    }
+
+    toggleCriteria(name, id) {
+        console.log('Criteria ID for Toggle: ', id);
+
+        // Update isChecked of corresponding id
+        this.setState(({criteria}) => ({
+            criteria: {
+                ...criteria,
+                [name]: criteria[name].map(x => {
+                    if(x.id === id) {
+                        return { ...x, isChecked: !x.isChecked};
+                    }
+
+                    return x;
+                })
+            }
+        }));
     }
 
     componentDidMount() {
@@ -20,7 +39,7 @@ class TargetGroup extends Component {
                 if (!criteria[name]) {
                     criteria[name] = [];
                 }
-                criteria[name].push({id, value});
+                criteria[name].push({id, value, isChecked: false});
             });
 
             this.setState({criteria});
@@ -30,7 +49,7 @@ class TargetGroup extends Component {
     }
 
     render() {
-        const {criteria} = this.state;
+        const {criteria, targetReach} = this.state;
         return (
             <div>
                 <Title value="Target Group"/>
@@ -46,6 +65,7 @@ class TargetGroup extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="criteria">TG Criteria</label>
+                                <span className="badge pull-right">{targetReach}</span>
                                 <div className="panel panel-default">
                                     <div className="panel-body">
                                         { Object.keys(criteria).map((item, i) =>
@@ -53,11 +73,13 @@ class TargetGroup extends Component {
                                                 <dt>{ `${(i + 1)}.  ${item}` }</dt>
                                                 <dd>
                                                     <ul className="list-unstyled margin-left-15">
-                                                        {criteria[item].map(({id, value}) =>
+                                                        {criteria[item].map(({id, value, isChecked}) =>
                                                             <li key={id}>
                                                                 <div className="checkbox margin-5">
                                                                     <label>
-                                                                        <input type="checkbox"/> {value}
+                                                                        <input type="checkbox"
+                                                                               checked={isChecked}
+                                                                               onChange={() => this.toggleCriteria(item, id)}/> {value}
                                                                     </label>
                                                                 </div>
                                                             </li>
