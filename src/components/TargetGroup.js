@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
 import Http from '../services/Http';
 import Title from './Title';
-import Select from 'react-select-plus';
-import 'react-select-plus/dist/react-select-plus.css';
-
-// const Options = props => props.data.map(({id, value}) => <option key={ id }>{ value }</option>);
 
 class TargetGroup extends Component {
     constructor(props) {
         super(props);
         this.state = {
             criteria: {},
-            selected_criteria: [],
-            selectedOption: ''
+            logicalCriteriaList: [] // Contains selected criteria id
         };
-
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(selectedOption) {
-        this.setState({selectedOption});
-        console.log(`Selected: ${selectedOption.label}`);
-    }
-
-    componentWillMount() {
+    componentDidMount() {
         Http.GET('getCriteria')
         .then(response => {
 
@@ -36,32 +24,13 @@ class TargetGroup extends Component {
             });
 
             this.setState({criteria});
-            console.log('Success criteria: ', JSON.stringify(this.state.criteria, null, 2));
+            // console.log('Success criteria: ', JSON.stringify(this.state.criteria, null, 2));
         })
         .catch(error => console.error(error));
     }
 
     render() {
-        const {criteria, selectedOption} = this.state;
-        const value = selectedOption && selectedOption.value;
-        const options = [
-            // {
-            //     label: 'Primary Colors',
-            //     options: [
-            //         {label: 'Yellow', value: 'yellow'},
-            //         {label: 'Red', value: 'red'},
-            //         {label: 'Blue', value: 'blue'}
-            //     ]
-            // },
-            // {
-            //     label: 'Secondary Colors',
-            //     options: [
-                    {label: 'Yellow', value: 'yellow'},
-                    {label: 'Red', value: 'red'},
-                    {label: 'Blue', value: 'blue'}
-            //     ]
-            // }
-        ];
+        const {criteria} = this.state;
         return (
             <div>
                 <Title value="Target Group"/>
@@ -76,14 +45,30 @@ class TargetGroup extends Component {
                                        placeholder="TG Name"/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="criteria">Criteria</label>
-                                <Select
-                                    name="form-field-name"
-                                    placeholder="Select your favourite(s)"
-                                    value={ value }
-                                    onChange={ this.handleChange }
-                                    options={ options }
-                                    multi simpleValue/>
+                                <label htmlFor="criteria">TG Criteria</label>
+                                <div className="panel panel-default">
+                                    <div className="panel-body">
+                                        { Object.keys(criteria).map((item, i) =>
+                                            <dl key={item}>
+                                                <dt>{ `${(i + 1)}.  ${item}` }</dt>
+                                                <dd>
+                                                    <ul className="list-unstyled margin-left-15">
+                                                        {criteria[item].map(({id, value}) =>
+                                                            <li key={id}>
+                                                                <div className="checkbox margin-5">
+                                                                    <label>
+                                                                        <input type="checkbox"/> {value}
+                                                                    </label>
+                                                                </div>
+                                                            </li>
+                                                        )}
+                                                    </ul>
+                                                </dd>
+                                            </dl>
+                                        ) }
+
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="description">Description</label>
@@ -107,7 +92,7 @@ class TargetGroup extends Component {
                             <button type="submit" className="btn btn-default">Submit</button>
                         </form>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-7 col-md-offset-1">
                         Lorem
                     </div>
                 </div>
@@ -117,6 +102,7 @@ class TargetGroup extends Component {
 }
 
 export default TargetGroup;
+
 /*
 [
     {
