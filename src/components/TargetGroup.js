@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import numeral from 'numeral';
 import Http from '../services/Http';
 import Title from './Title';
 import spinner from '../images/ajax-loader.gif';
@@ -25,6 +26,7 @@ class TargetGroup extends Component {
         this.handleValidation = this.handleValidation.bind(this);
         this.isValidForm = this.isValidForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getTargetGroups = this.getTargetGroups.bind(this);
     }
 
     toggleCriteria(name, id) {
@@ -101,6 +103,14 @@ class TargetGroup extends Component {
         .catch(error => console.error(error));
     }
 
+    getTargetGroups() {
+        Http.GET('targetGroups')
+        .then(({data}) => {
+            console.log('Success targetGroups: ', JSON.stringify(data, null, 2));
+        })
+        .catch(error => console.error(error));
+    }
+
     componentDidMount() {
         Http.GET('getCriteria')
         .then(response => {
@@ -117,6 +127,8 @@ class TargetGroup extends Component {
             // console.log('Success criteria: ', JSON.stringify(this.state.criteria, null, 2));
         })
         .catch(error => console.error(error));
+
+        this.getTargetGroups();
     }
 
     render() {
@@ -126,90 +138,137 @@ class TargetGroup extends Component {
                 <Title value="Target Group"/>
                 <div className="row">
                     <div className="col-md-4">
-                        { Object.keys(criteria).length === 0 && criteria.constructor === Object
-                            ? <img src={ spinner } style={ {width: 20, height: 20} } alt="Ajax Loader"/>
-                            : <form name="AddTargetGroup" onSubmit={ this.handleSubmit }>
-                                <div className={ 'form-group'.concat(error.name ? ' has-error' : '') }>
-                                    <label className="control-label" htmlFor="name">TG Name</label>
-                                    <input type="text"
-                                           className="form-control"
-                                           id="name"
-                                           name="name"
-                                           value={ name }
-                                           onChange={ this.handleChange }
-                                           onBlur={ this.handleValidation }
-                                           placeholder="i.e. Verified Personal Users"
-                                           aria-describedby="helpTGName"/>
-                                    { error.name ? <span id="helpTGName"
-                                                         className="help-block"
-                                                         style={ {marginTop: 0} }>
+
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h3 className="panel-title">Create Target Group</h3>
+                            </div>
+                            <div className="panel-body">
+                                { Object.keys(criteria).length === 0 && criteria.constructor === Object
+                                    ? <img src={ spinner } style={ {width: 20, height: 20} } alt="Ajax Loader"/>
+                                    : <form name="AddTargetGroup" onSubmit={ this.handleSubmit }>
+                                        <div className={ 'form-group'.concat(error.name ? ' has-error' : '') }>
+                                            <label className="control-label" htmlFor="name">TG Name</label>
+                                            <input type="text"
+                                                   className="form-control"
+                                                   id="name"
+                                                   name="name"
+                                                   value={ name }
+                                                   onChange={ this.handleChange }
+                                                   onBlur={ this.handleValidation }
+                                                   placeholder="i.e. Verified Personal Users"
+                                                   aria-describedby="helpTGName"/>
+                                            { error.name ? <span id="helpTGName"
+                                                                 className="help-block"
+                                                                 style={ {marginTop: 0} }>
                                 <small style={ {fontSize: '70%'} }>TG Name Required</small>
                             </span> : null }
-                                </div>
-                                <div className="form-group">
-                                    <label className="control-label" htmlFor="criteria">TG Criteria</label>
-                                    <span className="badge pull-right">{ targetReach }</span>
-                                    <div className="panel panel-default">
-                                        <div className="panel-body">
-                                            { Object.keys(criteria).map((item, i) =>
-                                                <dl key={ item }>
-                                                    <dt>{ `${(i + 1)}.  ${item}` }</dt>
-                                                    <dd>
-                                                        <ul className="list-unstyled margin-left-15">
-                                                            { criteria[item].map(({id, value, isChecked}) =>
-                                                                <li key={ id }>
-                                                                    <div className="checkbox margin-5">
-                                                                        <label>
-                                                                            <input type="checkbox"
-                                                                                   checked={ isChecked }
-                                                                                   onChange={ () => this.toggleCriteria(item, id) }/> { value }
-                                                                        </label>
-                                                                    </div>
-                                                                </li>
-                                                            ) }
-                                                        </ul>
-                                                    </dd>
-                                                </dl>
-                                            ) }
                                         </div>
-                                    </div>
-                                </div>
-                                <div className={ 'form-group'.concat(error.description ? ' has-error' : '') }>
-                                    <label className="control-label" htmlFor="description">Description</label>
-                                    <textarea className="form-control"
-                                              id="description"
-                                              name="description"
-                                              rows="3"
-                                              value={ description }
-                                              onChange={ this.handleChange }
-                                              onBlur={ this.handleValidation }
-                                              aria-describedby="helpDescription"/>
-                                    { error.description ? <span id="helpDescription"
-                                                         className="help-block"
-                                                         style={ {marginTop: 0} }>
+                                        <div className="form-group">
+                                            <label className="control-label" htmlFor="criteria">TG Criteria</label>
+                                            <span className="badge pull-right">{ numeral(targetReach).format('0,0') }</span>
+                                            <div className="panel panel-default">
+                                                <div className="panel-body">
+                                                    { Object.keys(criteria).map((item, i) =>
+                                                        <dl key={ item }>
+                                                            <dt>{ `${(i + 1)}.  ${item}` }</dt>
+                                                            <dd>
+                                                                <ul className="list-unstyled margin-left-15">
+                                                                    { criteria[item].map(({id, value, isChecked}) =>
+                                                                        <li key={ id }>
+                                                                            <div className="checkbox margin-5">
+                                                                                <label>
+                                                                                    <input type="checkbox"
+                                                                                           checked={ isChecked }
+                                                                                           onChange={ () => this.toggleCriteria(item, id) }/> { value }
+                                                                                </label>
+                                                                            </div>
+                                                                        </li>
+                                                                    ) }
+                                                                </ul>
+                                                            </dd>
+                                                        </dl>
+                                                    ) }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={ 'form-group'.concat(error.description ? ' has-error' : '') }>
+                                            <label className="control-label" htmlFor="description">Description</label>
+                                            <textarea className="form-control"
+                                                      id="description"
+                                                      name="description"
+                                                      rows="3"
+                                                      value={ description }
+                                                      onChange={ this.handleChange }
+                                                      onBlur={ this.handleValidation }
+                                                      aria-describedby="helpDescription"/>
+                                            { error.description ? <span id="helpDescription"
+                                                                        className="help-block"
+                                                                        style={ {marginTop: 0} }>
                                 <small style={ {fontSize: '70%'} }>Description Required</small>
                             </span> : null }
-                                </div>
-                                <div className="form-group">
-                                    <div className="checkbox">
-                                        <label htmlFor="isActive">
-                                            <input type="checkbox"
-                                                   id="isActive"
-                                                   name="isActive"
-                                                   checked={ isActive }
-                                                   onChange={ this.handleChange }/>
-                                            <small style={ {marginTop: 2, display: 'block'} }>Active</small>
-                                        </label>
-                                    </div>
-                                </div>
-                                <button type="submit"
-                                        className="btn btn-default"
-                                        disabled={ !this.isValidForm() }>Submit
-                                </button>
-                            </form> }
+                                        </div>
+                                        <div className="form-group">
+                                            <div className="checkbox">
+                                                <label htmlFor="isActive">
+                                                    <input type="checkbox"
+                                                           id="isActive"
+                                                           name="isActive"
+                                                           checked={ isActive }
+                                                           onChange={ this.handleChange }/>
+                                                    <small style={ {marginTop: 2, display: 'block'} }>Active</small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <button type="submit"
+                                                className="btn btn-default"
+                                                disabled={ !this.isValidForm() }>Submit
+                                        </button>
+                                    </form> }
+                            </div>
+                        </div>
                     </div>
                     <div className="col-md-7 col-md-offset-1">
-                        Lorem
+                        <div className="panel panel-default">
+                            <div className="panel-heading">
+                                <h3 className="panel-title">Target Group List</h3>
+                            </div>
+                            <table className="table table-striped table-hover"
+                                   style={ {marginBottom: 0} }>
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <small>lkdfld lkdfd</small>
+                                    </td>
+                                    <td>
+                                        <small>lorem this let</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <small>lkdfld lkdfd</small>
+                                    </td>
+                                    <td>
+                                        <small>lorem this let</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <small>lkdfld lkdfd</small>
+                                    </td>
+                                    <td>
+                                        <small>lorem this let</small>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -221,95 +280,83 @@ export default TargetGroup;
 
 /*
 [
-    {
+  {
+    "id": 1,
+    "name": "Verified Personal Member",
+    "description": "Verified Personal Member",
+    "isActive": true,
+    "logicalCriteriaList": [
+      {
         "id": 1,
         "criterionName": "Account Type",
         "displayValue": "Personal",
         "bucket": "personal_members"
-    },
-    {
-        "id": 2,
-        "criterionName": "Account Type",
-        "displayValue": "Business",
-        "bucket": "business_members"
-    },
-    {
+      },
+      {
         "id": 3,
         "criterionName": "Verification Status",
         "displayValue": "Verified",
         "bucket": "verified_members"
-    },
-    {
+      }
+    ],
+    "createdAt": 1524379710231,
+    "updateAt": 1524379710231
+  },
+  {
+    "id": 2,
+    "name": "Verified Personal",
+    "description": "Lorem Ipsum",
+    "isActive": true,
+    "logicalCriteriaList": [
+      {
+        "id": 1,
+        "criterionName": "Account Type",
+        "displayValue": "Personal",
+        "bucket": "personal_members"
+      },
+      {
+        "id": 3,
+        "criterionName": "Verification Status",
+        "displayValue": "Verified",
+        "bucket": "verified_members"
+      }
+    ],
+    "createdAt": 1524457392277,
+    "updateAt": 1524457392277
+  },
+  {
+    "id": 3,
+    "name": "Not Verified Business less than 25%",
+    "description": "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
+    "isActive": true,
+    "logicalCriteriaList": [
+      {
         "id": 4,
         "criterionName": "Verification Status",
         "displayValue": "Not verified",
         "bucket": "not_verified_members"
-    },
-    {
-        "id": 5,
-        "criterionName": "Verification Status",
-        "displayValue": "In Progress",
-        "bucket": "in_progress_members"
-    },
-    {
-        "id": 6,
-        "criterionName": "Verification Status",
-        "displayValue": "Rejected",
-        "bucket": "rejected_members"
-    },
-    {
+      },
+      {
+        "id": 2,
+        "criterionName": "Account Type",
+        "displayValue": "Business",
+        "bucket": "business_members"
+      },
+      {
         "id": 7,
         "criterionName": "Profile Completion Score",
         "displayValue": "0%",
         "bucket": "profile_completion_score_0"
-    },
-    {
+      },
+      {
         "id": 8,
         "criterionName": "Profile Completion Score",
         "displayValue": "25%",
         "bucket": "profile_completion_score_25"
-    },
-    {
-        "id": 9,
-        "criterionName": "Profile Completion Score",
-        "displayValue": "50%",
-        "bucket": "profile_completion_score_50"
-    },
-    {
-        "id": 10,
-        "criterionName": "Profile Completion Score",
-        "displayValue": "75%",
-        "bucket": "profile_completion_score_75"
-    },
-    {
-        "id": 11,
-        "criterionName": "Profile Completion Score",
-        "displayValue": "100%",
-        "bucket": "profile_completion_score_100"
-    },
-    {
-        "id": 12,
-        "criterionName": "Mobile Operator",
-        "displayValue": "Grameenphone",
-        "bucket": "mobile_operator_gp"
-    },
-    {
-        "id": 13,
-        "criterionName": "Mobile Operator",
-        "displayValue": "Robi",
-        "bucket": "mobile_operator_grobi"
-    },
-    {
-        "id": 14,
-        "criterionName": "Mobile Operator",
-        "displayValue": "Banglalink",
-        "bucket": "mobile_operator_banglalink"
-    },
-    {
-        "id": 15,
-        "criterionName": "Mobile Operator",
-        "displayValue": "Teletalk",
-        "bucket": "mobile_operator_teletalk"
-    }
+      }
+    ],
+    "createdAt": 1524458454196,
+    "updateAt": 1524458454196
+  }
 ]
 */
