@@ -10,7 +10,7 @@ class NotificationsModule extends Component {
         super(props);
         this.state = {
             name: '',
-            targetReach:'',
+            targetReach:0,
             loader: false,
             description: '',
             targetGroupNotification: [],
@@ -38,15 +38,23 @@ class NotificationsModule extends Component {
             let targetGroupNotification = data
             
             this.setState({targetGroupNotification});
+            
             console.log(this.state.targetGroupNotification)
         })
         .catch(error => console.error(error));
     }
 
     clearData() {
-        this.state.name = ''
-        this.state.loader = false
-        this.state.description = ''
+        this.setState({
+            name:'',
+            loader:'',
+            description:'',
+            group:'',
+            targetReach:0
+        })
+        // this.state.name = ''
+        // this.state.loader = false
+        // this.state.description = ''
     }
 
     isValidForm() {
@@ -65,7 +73,10 @@ class NotificationsModule extends Component {
             var param = '/'+this.state.group+"/reach"
             Http.GET('targetGroups',param)
             .then(({data}) => {
-                this.state.targetReach=data.count
+                // this.state.targetReach=data.count
+                this.setState({
+                    targetReach: data.count
+                });
                 console.log(data)
             })
             .catch(error => console.error(error));
@@ -108,13 +119,13 @@ class NotificationsModule extends Component {
             .then(response => {
                 console.log('Success push notification sent: ', JSON.stringify(response, null, 2));
                 this.state.loader= false
-                let successColor = { background: '#0E1717', text: "#FFFFFF" };
+                let successColor = { background: '#5ac9b6', text: "#FFFFFF" };
                 notify.show("Push notification has been sent successfully", "custom", 5000, successColor);
                 this.clearData()
             })
             .catch(error => {
                 console.error(error);
-                let failColor = { background: '#0E1717', text: "#FFFFFF" };
+                let failColor = { background: '#fc4f2a ', text: "#FFFFFF" };
                 notify.show("Push notification sent failed.", "custom", 5000, failColor);
                 
                 this.state.loader= false
@@ -133,14 +144,14 @@ class NotificationsModule extends Component {
             .then(response => {
                 console.log('Success push notification sent: ', JSON.stringify(response, null, 2));
                 this.state.loader= false
-                let successColor = { background: '#0E1717', text: "#FFFFFF" };
+                let successColor = { background: '#5ac9b6', text: "#FFFFFF" };
                 notify.show("SMS has been sent successfully", "custom", 5000, successColor);
                 
                 this.clearData()
             })
             .catch(error => {
                 console.error(error);
-                let failColor = { background: '#0E1717', text: "#FFFFFF" };
+                let failColor = { background: '#fc4f2a ', text: "#FFFFFF" };
                 notify.show("SMS sent failed.", "custom", 5000, failColor);
 
                 this.state.loader= false
@@ -158,7 +169,7 @@ class NotificationsModule extends Component {
         const {name, description,targetGroupNotification,group,error,loader,targetReach} = this.state;
         return (
             <div>
-                <Title value="NotificationsModule"/>
+                <Title value="Notify Users"/>
                 <Notifications />
                 <div className="row">
                     <div className="col-md-5">
@@ -220,9 +231,10 @@ class NotificationsModule extends Component {
                                         </div>
 
                                         <div className="form-group">
-                                            <label htmlFor="group">Select Target group:</label>
+                                            <label htmlFor="group">Select Target group: <span className="badge pull-right">{ numeral(targetReach).format('0,0') }</span></label>
                                             <select className="form-control" value={ group } id="group"
                                             onChange={ this.handleChange }>
+                                                <option>Select Your Target Group</option>
                                                 {this.state.targetGroupNotification.map((group, index) => (
                                                     <option key={group.id} value={group.id}>{ group.name }</option>
                                                 ))}
