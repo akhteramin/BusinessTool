@@ -9,7 +9,10 @@ const routes = {
     get_posts: `${typicode}/posts`,
     get_comments: `${typicode}/comments`,
     targetGroups: `${bizz}/target-groups`,
-    getCriteria: `${bizz}/target-groups/criteria`
+    getCriteria: `${bizz}/target-groups/criteria`,
+    notifyPush: `${bizz}/notify/push`,
+    notifySms: `${bizz}/notify/sms`,
+    
 };
 
 const encodeQueryData = data => {

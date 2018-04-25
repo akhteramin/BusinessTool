@@ -17,7 +17,8 @@ class TargetGroup extends Component {
             error: {
                 name: false,
                 description: false
-            }
+            },
+            targetGroup: []
         };
 
         this.toggleCriteria = this.toggleCriteria.bind(this);
@@ -99,6 +100,7 @@ class TargetGroup extends Component {
         Http.POST('targetGroups', {name, description, logicalCriteriaList, isActive, id: null})
         .then(response => {
             console.log('Success create TG: ', JSON.stringify(response, null, 2));
+            this.getTargetGroups();
         })
         .catch(error => console.error(error));
     }
@@ -107,6 +109,10 @@ class TargetGroup extends Component {
         Http.GET('targetGroups')
         .then(({data}) => {
             console.log('Success targetGroups: ', JSON.stringify(data, null, 2));
+            let targetGroup = data
+            
+            this.setState({targetGroup});
+            console.log(this.state.targetGroup)
         })
         .catch(error => console.error(error));
     }
@@ -132,7 +138,7 @@ class TargetGroup extends Component {
     }
 
     render() {
-        const {name, description, isActive, criteria, targetReach, error} = this.state;
+        const {name, description, isActive, criteria, targetReach,targetGroup, error} = this.state;
         return (
             <div>
                 <Title value="Target Group"/>
@@ -239,33 +245,19 @@ class TargetGroup extends Component {
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>People Reach</th>
+                                    
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <small>lkdfld lkdfd</small>
-                                    </td>
-                                    <td>
-                                        <small>lorem this let</small>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <small>lkdfld lkdfd</small>
-                                    </td>
-                                    <td>
-                                        <small>lorem this let</small>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <small>lkdfld lkdfd</small>
-                                    </td>
-                                    <td>
-                                        <small>lorem this let</small>
-                                    </td>
-                                </tr>
+                                    {this.state.targetGroup.map((group, index) => (
+                                        <tr key={group.id}>
+                                            <td>{group.name}</td>
+                                            <td>{group.description}</td>
+                                            <td>{group.reach}</td>
+                                        </tr>
+                                    ))}
+                                
                                 </tbody>
                             </table>
                         </div>

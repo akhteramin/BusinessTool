@@ -7,7 +7,7 @@ import PublicLayout from './components/PublicLayout';
 import Home from './components/Home';
 import Login from './components/Login';
 import TargetGroup from './components/TargetGroup';
-import Notifications from './components/Notifications';
+import NotificationsModule from './components/Notifications';
 import ManageCampaign from './components/ManageCampaign';
 import NotFound from './components/NotFound';
 
@@ -43,7 +43,7 @@ class Main extends Component {
                     <PrivateRoute path="/app/home" component={ Home }/>
                     <PrivateRoute path="/app/target-group"
                                   component={ TargetGroup }/>
-                    <PrivateRoute path="/app/notifications" component={ Notifications }/>
+                    <PrivateRoute path="/app/notifications" component={ NotificationsModule }/>
                     <PrivateRoute path="/app/campaign/manage" component={ ManageCampaign }/>
                     <Route component={ NotFound }/>
                 </Switch>
