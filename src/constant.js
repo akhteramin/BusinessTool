@@ -1,9 +1,11 @@
-export const actionMap = {
+const APPLICATION_ID = 7;
+
+const actionMap = {
     EXECUTE: 'Matched',
     SKIP: 'Skipped'
 };
 
-export const statusMap = {
+const statusMap = {
     102: {
         name: 'IN PROGRESS',
         icon: 'time',
@@ -16,13 +18,16 @@ export const statusMap = {
     }
 };
 
-export const categoryContainer = [
+const categoryContainer = [
     {value: 'SUCCESSFUL', style: 'success'},
     {value: 'REVERTED', style: 'info'},
     {value: 'FAILED', style: 'danger'}
 ];
 
-export const API = {
+const API = {
     typicode: 'https://jsonplaceholder.typicode.com',
-    bizz: 'http://10.10.10.10:8084/api' // DEV
+    bizz: 'http://10.10.10.10:8084/api', // DEV,
+    central_auth: 'http://10.10.10.199:8000'
 };
+
+export {APPLICATION_ID, actionMap, statusMap, categoryContainer, API};

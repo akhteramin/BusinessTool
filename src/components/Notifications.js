@@ -52,9 +52,6 @@ class NotificationsModule extends Component {
             group:'',
             targetReach:0
         })
-        // this.state.name = ''
-        // this.state.loader = false
-        // this.state.description = ''
     }
 
     isValidForm() {

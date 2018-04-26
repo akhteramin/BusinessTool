@@ -69,7 +69,7 @@ class Sidebar extends Component {
                     { /*<a href="https://www.ipay.com.bd" className="article">Accounts & Settings</a>*/ }
                     { /*</li>*/ }
                     <li>
-                        <Link to="/login" className="download">Logout</Link>
+                        <Link to="/app/logout" className="download">Logout</Link>
                     </li>
 
                 </ul>
