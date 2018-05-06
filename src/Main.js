@@ -13,13 +13,14 @@ import ManageCampaign from './components/ManageCampaign';
 import NotFound from './components/NotFound';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-    return (
+    const token = JSON.parse(localStorage.getItem('token'));
+    return token ? (
         <Route { ...rest } render={ matchProps => (
             <PrivateLayout>
                 <Component { ...matchProps } />
             </PrivateLayout>
         ) }/>
-    );
+    ) : <Redirect to="/login"/>;
 };
 
 const PublicRoute = ({component: Component, ...rest}) => {
