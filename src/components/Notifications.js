@@ -66,7 +66,10 @@ class NotificationsModule extends Component {
         const {name} = target;
         if(target.type === 'select-one')
         {
-            this.state.group = value
+            // this.state.group = value
+            this.setState({
+                group: value
+            });
             var param = '/'+this.state.group+"/reach"
             Http.GET('targetGroups',param)
             .then(({data}) => {
@@ -97,7 +100,9 @@ class NotificationsModule extends Component {
     handleSubmit(event,type) {
         event.preventDefault();
         console.log(type)
-        this.state.loader = true
+        this.setState({
+            loader : true
+        })
         const {name, description,group} = this.state;
         console.log(name)
         console.log(description)
@@ -115,7 +120,9 @@ class NotificationsModule extends Component {
             Http.POST('notifyPush', paramData)
             .then(response => {
                 console.log('Success push notification sent: ', JSON.stringify(response, null, 2));
-                this.state.loader= false
+                this.setState({
+                    loader : false
+                })
                 let successColor = { background: '#5ac9b6', text: "#FFFFFF" };
                 notify.show("Push notification has been sent successfully", "custom", 5000, successColor);
                 this.clearData()
@@ -124,8 +131,9 @@ class NotificationsModule extends Component {
                 console.error(error);
                 let failColor = { background: '#fc4f2a ', text: "#FFFFFF" };
                 notify.show("Push notification sent failed.", "custom", 5000, failColor);
-                
-                this.state.loader= false
+                this.setState({
+                    loader : false
+                })
             });
         }
         else if(type === 2)
@@ -140,7 +148,9 @@ class NotificationsModule extends Component {
             Http.POST('notifySms', paramData)
             .then(response => {
                 console.log('Success push notification sent: ', JSON.stringify(response, null, 2));
-                this.state.loader= false
+                this.setState({
+                    loader : false
+                })
                 let successColor = { background: '#5ac9b6', text: "#FFFFFF" };
                 notify.show("SMS has been sent successfully", "custom", 5000, successColor);
                 
@@ -151,7 +161,9 @@ class NotificationsModule extends Component {
                 let failColor = { background: '#fc4f2a ', text: "#FFFFFF" };
                 notify.show("SMS sent failed.", "custom", 5000, failColor);
 
-                this.state.loader= false
+                this.setState({
+                    loader : false
+                })
             });
         }
         
@@ -163,39 +175,16 @@ class NotificationsModule extends Component {
     }
 
     render() {
-        const {name, description,targetGroupNotification,group,error,loader,targetReach} = this.state;
+        const {name, description,group,loader,targetReach} = this.state;
         return (
             <div>
                 <Title value="Notify Users"/>
                 <Notifications />
                 <div className="row">
-                    <div className="col-md-5">
-                        <table className="table table-striped table-hover"
-                                        style={ {marginBottom: 0} }>
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>People Reach</th>
-                                
-                            </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.targetGroupNotification.map((group, index) => (
-                                    <tr key={group.id}>
-                                        <td>{group.name}</td>
-                                        <td>{group.description}</td>
-                                        <td>{group.reach}</td>
-                                    </tr>
-                                ))}
-                            
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="col-md-6">
+                <div className="col-md-6">
                         <div className="panel panel-default">
                             <div className="panel-heading">
-                                <h3 className="panel-title">Send Notification</h3>
+                                <h3 className="panel-title">Send SMS / Notification</h3>
                             </div>
                             <div className="panel-body">
                             { loader === true 
@@ -252,6 +241,37 @@ class NotificationsModule extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="col-md-5">
+                        <table className="table table-striped table-hover"
+                                        style={ {marginBottom: 0} }>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>People Reach</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.targetGroupNotification.map((group, index) => (
+                                    <tr key={group.id}>
+                                       <td width="20">{group.name}</td>
+                                        <td width="30">{group.description}</td>
+                                        <td width="40">
+                                            {group.logicalCriteriaList.map((criteria, index) => (
+                                            <p key={criteria.id}>
+                                                {criteria.criterionName}: {criteria.displayValue}, 
+                                            </p>
+                                            ))}
+                                        </td>
+                                        <td width="40">{group.reach}</td>
+                                    </tr>
+                                ))}
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                    
             
                 </div>
             </div>

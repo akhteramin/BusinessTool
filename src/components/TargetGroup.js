@@ -138,7 +138,7 @@ class TargetGroup extends Component {
     }
 
     render() {
-        const {name, description, isActive, criteria, targetReach,targetGroup, error} = this.state;
+        const {name, description, isActive, criteria, targetReach, error} = this.state;
         return (
             <div>
                 <Title value="Target Group"/>
@@ -245,6 +245,7 @@ class TargetGroup extends Component {
                                 <tr>
                                     <th>Name</th>
                                     <th>Description</th>
+                                    <th>Criteria</th>
                                     <th>People Reach</th>
                                     
                                 </tr>
@@ -252,9 +253,16 @@ class TargetGroup extends Component {
                                 <tbody>
                                     {this.state.targetGroup.map((group, index) => (
                                         <tr key={group.id}>
-                                            <td>{group.name}</td>
-                                            <td>{group.description}</td>
-                                            <td>{group.reach}</td>
+                                            <td width="20">{group.name}</td>
+                                            <td width="30">{group.description}</td>
+                                            <td width="40">
+                                             {group.logicalCriteriaList.map((criteria, index) => (
+                                                <p key={criteria.id}>
+                                                    {criteria.criterionName}: {criteria.displayValue}, 
+                                                </p>
+                                             ))}
+                                            </td>
+                                            <td width="40">{group.reach}</td>
                                         </tr>
                                     ))}
                                 
@@ -269,86 +277,3 @@ class TargetGroup extends Component {
 }
 
 export default TargetGroup;
-
-/*
-[
-  {
-    "id": 1,
-    "name": "Verified Personal Member",
-    "description": "Verified Personal Member",
-    "isActive": true,
-    "logicalCriteriaList": [
-      {
-        "id": 1,
-        "criterionName": "Account Type",
-        "displayValue": "Personal",
-        "bucket": "personal_members"
-      },
-      {
-        "id": 3,
-        "criterionName": "Verification Status",
-        "displayValue": "Verified",
-        "bucket": "verified_members"
-      }
-    ],
-    "createdAt": 1524379710231,
-    "updateAt": 1524379710231
-  },
-  {
-    "id": 2,
-    "name": "Verified Personal",
-    "description": "Lorem Ipsum",
-    "isActive": true,
-    "logicalCriteriaList": [
-      {
-        "id": 1,
-        "criterionName": "Account Type",
-        "displayValue": "Personal",
-        "bucket": "personal_members"
-      },
-      {
-        "id": 3,
-        "criterionName": "Verification Status",
-        "displayValue": "Verified",
-        "bucket": "verified_members"
-      }
-    ],
-    "createdAt": 1524457392277,
-    "updateAt": 1524457392277
-  },
-  {
-    "id": 3,
-    "name": "Not Verified Business less than 25%",
-    "description": "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum ",
-    "isActive": true,
-    "logicalCriteriaList": [
-      {
-        "id": 4,
-        "criterionName": "Verification Status",
-        "displayValue": "Not verified",
-        "bucket": "not_verified_members"
-      },
-      {
-        "id": 2,
-        "criterionName": "Account Type",
-        "displayValue": "Business",
-        "bucket": "business_members"
-      },
-      {
-        "id": 7,
-        "criterionName": "Profile Completion Score",
-        "displayValue": "0%",
-        "bucket": "profile_completion_score_0"
-      },
-      {
-        "id": 8,
-        "criterionName": "Profile Completion Score",
-        "displayValue": "25%",
-        "bucket": "profile_completion_score_25"
-      }
-    ],
-    "createdAt": 1524458454196,
-    "updateAt": 1524458454196
-  }
-]
-*/
