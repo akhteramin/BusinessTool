@@ -248,6 +248,7 @@ class NotificationsModule extends Component {
                             <tr>
                                 <th>Name</th>
                                 <th>Description</th>
+                                <th>Criteria</th>
                                 <th>People Reach</th>
                                 
                             </tr>
