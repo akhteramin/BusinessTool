@@ -1,4 +1,4 @@
-const APPLICATION_ID = 10;
+const APPLICATION_ID = 7;
 
 const actionMap = {
     EXECUTE: 'Matched',
@@ -26,10 +26,10 @@ const categoryContainer = [
 
 const API = {
     typicode: 'https://jsonplaceholder.typicode.com',
-    // bizz: 'http://10.10.10.10:8084/api', // DEV,
-    bizz: 'http://10.15.40.10:8084/api', //test
-    // central_auth: 'http://10.10.10.199:8000' //DEV
-    central_auth: 'http://10.10.40.31:8000' //test
+    bizz: 'http://10.10.10.10:8084/api', // DEV,
+    // bizz: 'http://10.15.40.10:8084/api',
+    central_auth: 'http://10.10.10.199:8000'
+    // central_auth: 'http://10.10.40.31:8000'
 
 };
 
