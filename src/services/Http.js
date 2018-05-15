@@ -10,8 +10,8 @@ const routes = {
     get_comments: `${typicode}/comments`,
     targetGroups: `${bizz}/target-groups`,
     getCriteria: `${bizz}/target-groups/criteria`,
-    notifyPush: `${bizz}/notify/push`,
-    notifySms: `${bizz}/notify/sms`,
+    notifyPush: `${bizz}/notification/push`,
+    notifySms: `${bizz}/notification/sms`,
     login: `${central_auth}/auth/api/v1/login/`, // POST
     logout: `${central_auth}/auth/api/v1/logout/` // GET
     
