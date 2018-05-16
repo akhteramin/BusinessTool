@@ -56,7 +56,7 @@ class TargetGroup extends Component {
         const {logicalCriteriaList: list} = this.state;
 
         if (list.length) {
-            Http.GET('targetGroups', `/${list.join(',')}/reach`)
+            Http.GET('getCriteria', `/${list.join(',')}/reach`)
             .then(({data}) => {
                 console.log('Reach Count: ', data.count);
                 this.setState({

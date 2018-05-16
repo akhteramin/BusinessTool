@@ -62,15 +62,17 @@ class NotificationsModule extends Component {
     handleChange(event) {
        
         const {target} = event;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
         const {name} = target;
-        if(target.type === 'select-one')
+        if(target.type === 'select-one' && value!=='')
         {
+            console.log("target reach id",value)
             // this.state.group = value
             this.setState({
                 group: value
             });
-            var param = '/'+this.state.group+"/reach"
+            console.log("target reach id",this.state.group)
+            var param = '/'+value+"/reach"
             Http.GET('targetGroups',param)
             .then(({data}) => {
                 // this.state.targetReach=data.count
@@ -220,7 +222,7 @@ class NotificationsModule extends Component {
                                             <label htmlFor="group">Select Target group: <span className="badge pull-right">{ numeral(targetReach).format('0,0') }</span></label>
                                             <select className="form-control" value={ group } id="group"
                                             onChange={ this.handleChange }>
-                                                <option>Select Your Target Group</option>
+                                                <option value=''>Select Your Target Group</option>
                                                 {this.state.targetGroupNotification.map((group, index) => (
                                                     <option key={group.id} value={group.id}>{ group.name }</option>
                                                 ))}
